@@ -22,10 +22,8 @@ while continuer:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 continuer = False
-                pygame.quit()
         elif event.type == pygame.QUIT:
             continuer = False
-            pygame.quit()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if input_box.collidepoint(event.pos):
                 active = True
@@ -37,5 +35,5 @@ while continuer:
         pygame.draw.rect(screen, WHITE, [100, 100, 140, 32])
         
     pygame.display.flip()
-
+pygame.quit()
 #jeu = Jeu("Abel", "Thyph")
