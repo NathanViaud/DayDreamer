@@ -6,6 +6,9 @@ from fond import *
 
 pygame.init()
 
+VITESSE_SAUT = 40
+HAUTEUR_SAUT = 100
+
 size = (1024,768)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("cours forest")
@@ -42,15 +45,6 @@ while joue:
                 course.stop()
                 jouecourse = False
             if event.key == pygame.K_UP:
-                while joueur.pos_y != 600:
-                    screen.fill((255,255,255))
-                    all_sprites.draw(screen)    
-                    screen.blit(fond.img, (fond.pos_x, 0))
-                    all_sprites.draw(screen)
-                    screen.blit(joueur.image, (joueur.pos_x, joueur.pos_y))
-                    pygame.time.wait(80)
-                    pygame.display.flip()
-                    joueur.retombe()
                 jouesaut = False
     
     commandes = pygame.key.get_pressed()
@@ -61,19 +55,58 @@ while joue:
             course.play(-1)
             jouecourse = True
         fond.gauche(5)
+        while joueur.pos_y < 600:
+                joueur.pos_y += VITESSE_SAUT
+                print(joueur.pos_y)
+                screen.fill((255,255,255))
+                all_sprites.draw(screen)    
+                screen.blit(fond.img, (fond.pos_x, 0))
+                all_sprites.draw(screen)
+                screen.blit(joueur.image, (joueur.pos_x, joueur.pos_y))
+                pygame.time.wait(80)
+                pygame.display.flip()
     if commandes[pygame.K_RIGHT]:
         joueur.deplaceDroite()
         if jouecourse == False:
             course.play(-1)
             jouecourse = True
         fond.droite(-5)
+        while joueur.pos_y < 600:
+            joueur.pos_y += VITESSE_SAUT
+            print(joueur.pos_y)
+            screen.fill((255,255,255))
+            all_sprites.draw(screen)    
+            screen.blit(fond.img, (fond.pos_x, 0))
+            all_sprites.draw(screen)
+            screen.blit(joueur.image, (joueur.pos_x, joueur.pos_y))
+            pygame.time.wait(80)
+            pygame.display.flip()
     if commandes[pygame.K_UP]:
-        joueur.saut()
         if jouesaut == False:
             saut.play()
             jouesaut = True
-            
+        while joueur.pos_y > 600 - HAUTEUR_SAUT:
+            joueur.pos_y -= VITESSE_SAUT
+            screen.fill((255,255,255))
+            all_sprites.draw(screen)    
+            screen.blit(fond.img, (fond.pos_x, 0))
+            all_sprites.draw(screen)
+            screen.blit(joueur.image, (joueur.pos_x, joueur.pos_y))
+            pygame.time.wait(80)
+            pygame.display.flip()
     
+    while joueur.pos_y < 600:
+        joueur.pos_y += VITESSE_SAUT
+        print(joueur.pos_y)
+        screen.fill((255,255,255))
+        all_sprites.draw(screen)    
+        screen.blit(fond.img, (fond.pos_x, 0))
+        all_sprites.draw(screen)
+        screen.blit(joueur.image, (joueur.pos_x, joueur.pos_y))
+        pygame.time.wait(80)
+        pygame.display.flip()
+
+
     screen.fill((255,255,255))
     all_sprites.draw(screen)    
     screen.blit(fond.img, (fond.pos_x, 0))
