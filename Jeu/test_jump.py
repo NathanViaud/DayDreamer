@@ -31,6 +31,12 @@ all_sprites = pygame.sprite.Group()
 
 all_sprites.add(joueur)
 
+
+p1 = plateforme((500, 550))
+p2 = plateforme((750, 550))
+
+plateformes = [p1, p2]
+
 vitesse = 0
 
 while joue:
@@ -55,8 +61,12 @@ while joue:
     fonddeplace = joueur.deplace(vitesse)
     if fonddeplace :
         fond.droite(vitesse)
+        for i in plateformes:
+            i.droite(vitesse)
     all_sprites.draw(screen)
     screen.blit(fond.img, (fond.pos_x, 0))
+    for i in plateformes:
+        pygame.draw.rect(screen, (255,0,0), i.rect, )
     pygame.time.wait(60)
     joueur.draw()
     joueur.saut()
