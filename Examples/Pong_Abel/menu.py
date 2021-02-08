@@ -46,4 +46,4 @@ while continuer:
     screen.blit(text, (input_box.x+5, input_box.y+5))
     pygame.display.flip()
 pygame.quit()
-jeu = Jeu("Abel", "Carlos")
+jeu = Jeu("Abel", "Thyph")
