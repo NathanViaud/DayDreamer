@@ -27,21 +27,23 @@ class joueurxD(pygame.sprite.Group):
     def deplace(self, vitesse):
         if vitesse > 0:
             print("a droite")
-            self.pos_x += vitesse
+            if self.pos_x <= 800:
+                self.pos_x += vitesse
             self.image = marchedroite[self.pose]
             self.pose += 1
             if(self.pose >= 2):
                 self.pose = 0
         elif vitesse < 0:
             print("a gauche")
-            self.pos_x += vitesse
+            if self.pos_x >= 250:
+                self.pos_x += vitesse
             self.image = marchegauche[self.pose]
             self.pose += 1
             if(self.pose >= 2):
                 self.pose = 0
         else:
             self.image = immobile
-            self.pose = 0
+        self.y_initial = self.pos_y
 
     def immobile(self, vitesse):
         if vitesse == 0:

@@ -3,6 +3,7 @@ import pygame
 from joueurxD import joueurxD
 
 from fond import *
+from plateforme import *
 
 pygame.init()
 
