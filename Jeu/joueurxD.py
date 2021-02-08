@@ -17,6 +17,7 @@ class joueurxD(pygame.sprite.Group):
         self.pos_x = pos_x
         self.pos_y = pos_y
         self.pose = 0
+        self.y_initial = self.pos_y
 
     def deplaceGauche(self):
         self.pos_x -= 5
@@ -35,3 +36,9 @@ class joueurxD(pygame.sprite.Group):
     def immobile(self):
         self.image = immobile
         self.pose = 0
+
+    def saut(self):
+        self.pos_y -= 25
+        
+    def retombe(self):
+        self.pos_y += 25
