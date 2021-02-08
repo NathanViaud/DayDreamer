@@ -31,3 +31,7 @@ class joueurxD(pygame.sprite.Group):
         self.pose += 1
         if(self.pose >= 2):
             self.pose = 0
+
+    def immobile(self):
+        self.image = immobile
+        self.pose = 0
