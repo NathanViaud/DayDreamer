@@ -52,12 +52,21 @@ class joueurxD(pygame.sprite.Group):
             self.image = immobile
             self.pose = 0 
 
-    def saut(self):
+    def saut(self, plateforme):
+        rect = pygame.Rect(418, 600, 100, 10)
         if self.enSaut:
             if self.jumpCount >= -27:
                 neg = 1
                 if self.jumpCount < 0:
+                    if plateforme != 0:
+                        if rect.collidepoint(self.pos_x+66,self.pos_y+153):
+                            print("collide")
+                            self.enSaut = False
+                            self.jumpCount = 27
                     neg = -1
+                    print(str(self.pos_x+66) + " | " + str(self.pos_y+153))
+                    print(str(rect.x) + " | " + str(rect.y))
+
                 self.pos_y -= self.jumpCount**2*0.1*neg
                 self.jumpCount -= 3
             else:

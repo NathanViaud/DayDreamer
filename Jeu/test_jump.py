@@ -32,8 +32,8 @@ all_sprites = pygame.sprite.Group()
 all_sprites.add(joueur)
 
 
-p1 = plateforme((500, 550))
-p2 = plateforme((750, 550))
+p1 = plateforme((500, 600))
+p2 = plateforme((750, 600))
 
 plateformes = [p1, p2]
 
@@ -66,10 +66,10 @@ while joue:
     all_sprites.draw(screen)
     screen.blit(fond.img, (fond.pos_x, 0))
     for i in plateformes:
-        pygame.draw.rect(screen, (255,0,0), i.rect, )
+        pygame.draw.rect(screen, (255,0,0), i.rect)
     pygame.time.wait(60)
     joueur.draw()
-    joueur.saut()
+    joueur.saut(p1.rect)
     joueur.immobile(vitesse)
     pygame.display.flip()
 pygame.quit()
