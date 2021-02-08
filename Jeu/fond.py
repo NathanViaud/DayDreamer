@@ -5,8 +5,8 @@ class fond:
         self.img = img
         self.pos_x= 0
 
-    def Droite(self, vitesse):
+    def droite(self, vitesse):
         self.pos_x +=  vitesse
 
-    def Gauche(self, vitesse):
+    def gauche(self, vitesse):
         self.pos_x +=  vitesse
