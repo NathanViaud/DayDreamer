@@ -21,29 +21,33 @@ class joueurxD(pygame.sprite.Group):
         self.pos_y = pos_y
         self.pose = 0
         self.enSaut = False
-        self.jumpCount = 20
+        self.jumpCount = 27
         self.screen = screen
 
     def deplace(self, vitesse):
+        fond_a_decal = True
         if vitesse > 0:
             print("a droite")
-            if self.pos_x <= 800:
+            if self.pos_x <= 420:
                 self.pos_x += vitesse
+                fond_a_decal = False
             self.image = marchedroite[self.pose]
             self.pose += 1
             if(self.pose >= 2):
                 self.pose = 0
         elif vitesse < 0:
             print("a gauche")
-            if self.pos_x >= 250:
+            if self.pos_x >= 420:
                 self.pos_x += vitesse
+                fond_a_decal = False
             self.image = marchegauche[self.pose]
             self.pose += 1
             if(self.pose >= 2):
                 self.pose = 0
         else:
             self.image = immobile
-        self.y_initial = self.pos_y
+
+        return fond_a_decal
 
     def immobile(self, vitesse):
         if vitesse == 0:
@@ -52,15 +56,15 @@ class joueurxD(pygame.sprite.Group):
 
     def saut(self):
         if self.enSaut:
-            if self.jumpCount >= -20:
+            if self.jumpCount >= -27:
                 neg = 1
                 if self.jumpCount < 0:
                     neg = -1
                 self.pos_y -= self.jumpCount**2*0.1*neg
-                self.jumpCount -= 2
+                self.jumpCount -= 3
             else:
                 self.enSaut = False
-                self.jumpCount = 20
+                self.jumpCount = 27
     
     def draw(self):
         self.screen.blit(self.image, (self.pos_x, self.pos_y))

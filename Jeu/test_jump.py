@@ -52,7 +52,10 @@ while joue:
             elif event.key == pygame.K_RIGHT:
                 vitesse = 0
 
-    joueur.deplace(vitesse)
+    fonddeplace = joueur.deplace(vitesse)
+    print(fonddeplace)
+    if fonddeplace :
+        fond.droite(vitesse)
     all_sprites.draw(screen)
     screen.blit(fond.img, (fond.pos_x, 0))
     pygame.time.wait(60)
