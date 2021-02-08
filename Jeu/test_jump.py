@@ -53,7 +53,6 @@ while joue:
                 vitesse = 0
 
     fonddeplace = joueur.deplace(vitesse)
-    print(fonddeplace)
     if fonddeplace :
         fond.droite(vitesse)
     all_sprites.draw(screen)

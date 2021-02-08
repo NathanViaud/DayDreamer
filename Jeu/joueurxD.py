@@ -27,7 +27,6 @@ class joueurxD(pygame.sprite.Group):
     def deplace(self, vitesse):
         fond_a_decal = True
         if vitesse > 0:
-            print("a droite")
             if self.pos_x <= 420:
                 self.pos_x += vitesse
                 fond_a_decal = False
@@ -36,7 +35,6 @@ class joueurxD(pygame.sprite.Group):
             if(self.pose >= 2):
                 self.pose = 0
         elif vitesse < 0:
-            print("a gauche")
             if self.pos_x >= 420:
                 self.pos_x += vitesse
                 fond_a_decal = False
