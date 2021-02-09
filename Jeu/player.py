@@ -38,8 +38,9 @@ class player():
     def update(self):
         
         w, h = pygame.display.get_surface().get_size()
-        dx = 0
+        vx = 0
         dy = 0
+        d1x = 0
 
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and self.jumped == False:
@@ -48,18 +49,11 @@ class player():
         if key[pygame.K_LEFT]:
             self.direction = "gauche"
             self.index += 1
-            if self.rect.x <= w/2:
-                self.world.gauche(2)
-            else:
-                dx -= 2
+            vx -= 2
         if key[pygame.K_RIGHT]:
             self.direction = "droite"
             self.index += 1
-            if self.rect.x >= w/2:
-                self.world.droite(2)
-            else:
-                dx += 2
-        
+            vx += 2
 
         self.vel_y += 0.1
         if self.vel_y > 10:
@@ -67,9 +61,8 @@ class player():
         dy += self.vel_y
 
         for plateforme in self.world.plateformes:
-            if plateforme.rect.colliderect(self.rect.x+dx, self.rect.y, self.width, self.height):
-                dx = 0
-                plateforme.vitesse = 0
+            if plateforme.rect.colliderect(self.rect.x+vx, self.rect.y, self.width, self.height):
+                vx =0
             if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
                 if self.vel_y < 0:
                     dy = plateforme.rect.bottom - self.rect.top
@@ -86,9 +79,11 @@ class player():
         for ennemi in self.world.ennemis:
             if ennemi.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
                 print("touché")
-
-
-        self.rect.x += dx
+                
+        if self.rect.x > w/2 and self.direction == "droite" or self.rect.x < w/2 and self.direction == "gauche" :
+            self.world.deplacement(vx)
+        else:
+            self.rect.x += vx
         self.rect.y += dy
 
         if self.rect.bottom > self.screen.get_height():

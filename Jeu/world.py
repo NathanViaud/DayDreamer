@@ -11,6 +11,17 @@ class world():
         self.fruits = fruits
         self.ennemis = ennemis
 
+    def deplacement(self, vitesse):
+        vitesse = -vitesse
+        self.fond.deplacement(vitesse)
+        for plateforme in self.plateformes:
+            plateforme.deplacement(vitesse)
+        for fruit in self.fruits:
+            fruit.deplacement(vitesse)
+        for ennemi in self.ennemis:
+            ennemi.deplacement(vitesse)
+
+
     def droite(self, vitesse):
         self.fond.droite(vitesse)
         for plateforme in self.plateformes:

@@ -16,6 +16,12 @@ class ennemi():
     def update(self):
         self.screen.blit(self.img, self.rect)
 
+    def deplacement(self, vitesse):
+        self.rect.x += vitesse
+        self.deb += vitesse
+        self.fin += vitesse
+        self.update()
+
     def droite(self, vitesse):
         self.rect.x -= vitesse
         self.deb -= vitesse

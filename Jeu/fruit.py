@@ -9,6 +9,10 @@ class fruit():
         self.rect.y = y
         self.screen = screen
 
+    def deplacement(self, vitesse):
+        self.rect.x += vitesse
+        self.update()
+
     def update(self):
         self.screen.blit(self.img, self.rect)
 
