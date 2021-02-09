@@ -11,7 +11,7 @@ class obstacles:
 
     def update(self):
         self.screen.blit(self.img, self.rect)
-        pygame.draw.rect(self.screen, (255, 0, 0), self.rect, 2)
+        #pygame.draw.rect(self.screen, (255, 0, 0), self.rect, 2)
 
 
     def deplacement(self, vitesse):

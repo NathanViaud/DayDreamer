@@ -19,3 +19,5 @@ class cle():
 
     def prendreCle(self):
         self.prise= True
+        transparent = (0, 0, 0, 0)
+        self.img.fill(transparent)
