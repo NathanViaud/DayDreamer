@@ -91,7 +91,10 @@ obs = []
 obstacle1 = obstacles(1500, 550, screen)
 obs.append(obstacle1)
 
-tuto = world(fond, plateformes, fruits, ennemis, obs)
+#clé
+cle1 = cle(1400, 400, screen)
+
+tuto = world(fond, plateformes, fruits, ennemis, obs, cle1)
 
 
 # Joueur:
