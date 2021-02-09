@@ -1,9 +1,9 @@
 import pygame
 
 class plateforme():
-    def __init__(self, x, y, screen):
+    def __init__(self, x, y, screen, width, height):
         img = pygame.image.load("sprites/plateforme/p1.png")
-        self.img = img
+        self.img = pygame.transform.scale(img, (width, height))
         self.rect = self.img.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -11,7 +11,7 @@ class plateforme():
 
     
     def update(self):
-        #self.screen.blit(self.img, self.rect)
+        self.screen.blit(self.img, self.rect)
         pygame.draw.rect(self.screen, (255, 0, 0), self.rect, 2)
 
     def deplacement(self, vitesse):
