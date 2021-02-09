@@ -2,10 +2,18 @@ import pygame
 
 class Player():
     def __init__(self, x ,y, screen, world):
-        img = pygame.image.load("idle.png")
+        self.images_r = []
+        self.images_l = []
+        self.index = 0
+        self.counter = 0
+        for num in range (1,3):
+            img_r = pygame.image.load(f'./sprites/player{num}.png')
+            img_l = pygame.transform.flip(img_r, True, False)
+            self.images_r.append(img_r)
+            self.images_l.append(img_l)
+        self.image = self.images_r[self.index]
         self.screen = screen
         self.world = world
-        self.image = img
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -13,12 +21,13 @@ class Player():
         self.height = self.image.get_height()
         self.vel_y = 0
         self.jumped = False
+        self.direction = " "
 
     def update(self):
 
         dx = 0
         dy = 0
-
+        mov_cooldown = 20
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and self.jumped == False:
             self.vel_y = -10
@@ -26,10 +35,27 @@ class Player():
         if key[pygame.K_SPACE] == False:
             self.jumped = False
         if key[pygame.K_LEFT]:
-            dx -= 2 
+            dx -= 2
+            self.counter += 1
+            self.direction = "izquierda"
         if key[pygame.K_RIGHT]:
             dx += 2
-        
+            self.index += 1
+            self.counter += 1
+            self.direction = "derecha"
+        if key[pygame.K_RIGHT] == False and key[pygame.K_LEFT] == False:
+            self.image = self.images_r[0]
+            self.counter = 0
+            self.index = 0
+
+
+        if self.counter > mov_cooldown:
+            if self.index >= len(self.images_r):
+                self.index = 0
+            if self.direction == "derecha":
+                self.image = self.images_r[self.index]
+            if self.direction == "izquierda":
+                self.image = self.images_l[self.index]
 
         self.vel_y += 0.1
         if self.vel_y > 2:
