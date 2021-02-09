@@ -57,8 +57,8 @@ tutorial = True
 #texte a afficher
 white = (255,255,255)
 font = pygame.font.Font(None, 50)
-mouvement_tuto = font.render("Utilisez les fleches pour bouger", True, white)
-saut = font.render("Pour sauter utilisez la touche espace", True, white)
+mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, white)
+saut = font.render("Pour sauter utilisez la barre espace", True, white)
 
 # Sol du terrain
 sol = plateforme(0, 750, screen, 8196, 18)
@@ -110,7 +110,7 @@ while joue:
     joueur.deplaceAnimation()
     joueur.update()
     if tutorial == True:
-        screen.blit(mouvement_tuto, (fond.pos_x, 244))
-        screen.blit(saut, (1000,244))
+        screen.blit(mouvement_tuto, (fond.pos_x+100, 244))
+        screen.blit(saut, (fond.pos_x+1500,244))
     pygame.display.update()
 pygame.quit()
