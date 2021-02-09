@@ -8,23 +8,15 @@ class Player():
         self.images_l = []
         self.index = 0
 
-        for i in range (1,3):
-            self.images_l.append(immobile)
-        for i in range (1,3):
-            self.images_l.append(pygame.image.load("sprites/player2.png"))
-        for i in range (1,3):
-            self.images_l.append(immobile)
-        for i in range (1,3):
-            self.images_l.append(pygame.image.load("sprites/player3.png"))
+        self.images_l.append(immobile)
+        self.images_l.append(pygame.image.load("sprites/player2.png"))
+        self.images_l.append(immobile)
+        self.images_l.append(pygame.image.load("sprites/player3.png"))
 
-        for i in range (1,3):
-            self.images_r.append(immobile)
-        for i in range (1,3):
-            self.images_r.append(pygame.image.load("sprites/droite1.png"))
-        for i in range (1,3):
-            self.images_r.append(immobile)
-        for i in range (1,3):
-            self.images_r.append(pygame.image.load("sprites/droite2.png"))
+        self.images_r.append(immobile)
+        self.images_r.append(pygame.image.load("sprites/droite1.png"))
+        self.images_r.append(immobile)
+        self.images_r.append(pygame.image.load("sprites/droite2.png"))
 
         self.image = immobile
         self.screen = screen
@@ -39,16 +31,18 @@ class Player():
         self.direction = ""
 
     def update(self):
-
-        if self.index >= 7:
+        if self.index >= 3:
             self.index = 0
-
         dx = 0
         dy = 0
         mov_cooldown = 20
         key = pygame.key.get_pressed()
+
+        if dy > 0.75 and dy < 550:
+            self.jumped = True
+
         if key[pygame.K_SPACE] and self.jumped == False:
-            self.vel_y = -10
+            self.vel_y = -25
             self.jumped = True
         if key[pygame.K_LEFT]:
             dx -= 10
@@ -65,9 +59,9 @@ class Player():
             self.image = immobile
             self.index = 0
 
-        self.vel_y += 0.1
-        if self.vel_y > 2:
-            self.vel_y = 2
+        self.vel_y += 0.75
+        if self.vel_y > 100:
+            self.vel_y = 100
         dy += self.vel_y
 
         if self.world[0].rect.colliderect(self.rect.x+dx, self.rect.y, self.width, self.height):
@@ -89,8 +83,7 @@ class Player():
             self.rect.bottom = self.screen.get_height()
             dy = 550
             self.jumped = False
-        
-        print(self.index)
+        print(dy)
         self.screen.blit(self.image, self.rect)
         pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)
 
