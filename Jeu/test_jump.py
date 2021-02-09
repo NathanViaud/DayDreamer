@@ -10,6 +10,7 @@ from world import *
 from fruit import *
 from ennemi import *
 from obstacles import *
+from lit import *
 
 pygame.init()
 
@@ -54,6 +55,12 @@ def genTuto():
         #clé
         cle1 = cle(1400, 400, screen)
         fond.pos_x = 0
+
+        #lit
+        l1 = lit(5400, 700, screen)
+
+        fond.reset()
+        
         return world(fond, plateformes, fruits, ennemis, obs, cle1)
 
 VITESSE_SAUT = 40

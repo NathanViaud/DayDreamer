@@ -22,3 +22,6 @@ class fond:
     def gauche(self, vitesse):
         self.pos_x +=  vitesse
         self.update()
+
+    def reset(self):
+        self.pos_x = 0
