@@ -37,6 +37,8 @@ class player():
 
         self.last_plateform = world.plateformes[0]
 
+        self.mort = False
+
     def update(self):
         
         w, h = pygame.display.get_surface().get_size()
@@ -84,7 +86,11 @@ class player():
 
         for ennemi in self.world.ennemis:
             if ennemi.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
-                print("touché")
+                self.mort = True
+
+        for obstacle in self.world.obstacles:
+            if obstacle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
+                self.mort = True
 
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:

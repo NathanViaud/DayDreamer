@@ -1,4 +1,5 @@
 import pygame
+import os
 
 from joueurxD import joueurxD
 
@@ -24,7 +25,7 @@ joue = True
 enCourse = False
 
 enSaut = False
-
+mort = pygame.image.load("images/mort.png")
 course = pygame.mixer.Sound("./son/course.wav")
 saut = pygame.mixer.Sound("./son/saut.wav")
 fond = fond(pygame.image.load("images/fond.png"), screen, 8196)
@@ -53,47 +54,46 @@ fond = fond(pygame.image.load("images/fond.png"), screen, 8196)
 # World tutoriel:
 tutorial = True
 
-
-#texte a afficher
 white = (255,255,255)
+#texte a afficher
 font = pygame.font.Font(None, 50)
 mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, white)
 saut = font.render("Pour sauter utilisez la barre espace", True, white)
+def genTuto():
+        # Sol du terrain
+        sol = plateforme(0, 750, screen, 8196, 18)
+        p_saut1 = plateforme(1300, 600, screen, 100, 10)
+        p_saut2 = plateforme(1600, 450, screen, 100, 10)
+        p_saut3 = plateforme(1900, 600, screen, 100, 10)
+        p_saut4 = plateforme(2400,700, screen, 50, 50)
+        p_saut5 = plateforme(2662,700, screen, 50, 50)
+        plateformes = []
+        plateformes.append(sol)
+        plateformes.append(p_saut1)
+        plateformes.append(p_saut2)
+        plateformes.append(p_saut3)
+        plateformes.append(p_saut4)
+        plateformes.append(p_saut5)
 
-# Sol du terrain
-sol = plateforme(0, 750, screen, 8196, 18)
-p_saut1 = plateforme(1300, 600, screen, 100, 10)
-p_saut2 = plateforme(1600, 450, screen, 100, 10)
-p_saut3 = plateforme(1900, 600, screen, 100, 10)
-p_saut4 = plateforme(2400,700, screen, 50, 50)
-p_saut5 = plateforme(2662,700, screen, 50, 50)
-plateformes = []
-plateformes.append(sol)
-plateformes.append(p_saut1)
-plateformes.append(p_saut2)
-plateformes.append(p_saut3)
-plateformes.append(p_saut4)
-plateformes.append(p_saut5)
+        # Fruits du niveau:
+        fruits = []
+        f1 = fruit(800, 600, screen)
+        f2 = fruit(1100, 400, screen)
+        fruits.append(f1)
+        fruits.append(f2)
 
-# Fruits du niveau:
-fruits = []
-f1 = fruit(800, 600, screen)
-f2 = fruit(1100, 400, screen)
-fruits.append(f1)
-fruits.append(f2)
+        # Enemis:
+        ennemis = []
+       # e1 = ennemi(2, 900, 350, screen, 900, 900, 1, 250, 500, 1)
+      #  ennemis.append(e1)
 
-# Enemis:
-e1 = ennemi(2, 900, 350, screen, 900, 900, 1, 250, 500, 1)
-ennemis = [e1]
+        # Piques ( A changer)
+        obs = []
+        obstacle1 = obstacles(1500, 550, screen)
+        obs.append(obstacle1)
+        return world(fond, plateformes, fruits, ennemis, obs)
 
-# Piques ( A changer)
-obs = []
-obstacle1 = obstacles(1500, 550, screen)
-obs.append(obstacle1)
-
-tuto = world(fond, plateformes, fruits, ennemis, obs)
-
-
+tuto = genTuto()
 # Joueur:
 joueur = player(3, 600, screen, tuto)
 
@@ -104,7 +104,7 @@ while joue:
         if event.type == pygame.QUIT:
             joue = False
     tuto.update()
-    for ennemi in ennemis:
+    for ennemi in tuto.ennemis:
         ennemi.moveE()
 
     
@@ -114,4 +114,22 @@ while joue:
         screen.blit(mouvement_tuto, (fond.pos_x+100, 244))
         screen.blit(saut, (fond.pos_x +1000,244))
     pygame.display.update()
+
+    while joueur.mort and joue:
+        screen.blit(mort, (0,0,1024,768))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                joue = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    joue = False
+                else:
+                    joueur.mort = False
+                    tuto = genTuto()
+                    joueur = player(3, 600, screen, tuto)
+                    
+                print("retry")
+                print(joueur.mort)
+    print(joueur.mort)
 pygame.quit()
