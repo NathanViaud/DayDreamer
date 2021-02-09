@@ -83,7 +83,8 @@ fruits.append(f1)
 fruits.append(f2)
 
 # Enemis:
-ennemis = []
+e1 = ennemi(2, 900, 350, screen, 900, 900, 1, 250, 500, 1)
+ennemis = [e1]
 
 # Piques ( A changer)
 obs = []
@@ -111,6 +112,6 @@ while joue:
     joueur.update()
     if tutorial == True:
         screen.blit(mouvement_tuto, (fond.pos_x+100, 244))
-        screen.blit(saut, (fond.pos_x+1500,244))
+        screen.blit(saut, (fond.pos_x +1000,244))
     pygame.display.update()
 pygame.quit()

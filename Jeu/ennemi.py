@@ -1,7 +1,7 @@
 import pygame
 
 class ennemi():
-    def __init__(self, type, x, y, screen , deb, fin, vitesse):
+    def __init__(self, type, x, y, screen , xd, xf, vitesse, yd, yf, vitesse_y):
         self.type = type
         img = pygame.image.load("sprites/ennemis/e" + str(type) + ".png")
         self.img = img
@@ -9,17 +9,21 @@ class ennemi():
         self.rect.x = x
         self.rect.y = y
         self.screen = screen
-        self.deb = deb
-        self.fin = fin
+        self.xd = xd
+        self.xf = xf
         self.vitesse = vitesse
+        self.yd = yd
+        self.yf = yf
+        self.vitesse_y = vitesse_y
+
 
     def update(self):
         self.screen.blit(self.img, self.rect)
 
     def deplacement(self, vitesse):
         self.rect.x += vitesse
-        self.deb += vitesse
-        self.fin += vitesse
+        self.xd += vitesse
+        self.xf += vitesse
         self.update()
 
     def droite(self, vitesse):
@@ -35,8 +39,12 @@ class ennemi():
         self.update()
 
     def moveE(self):
-        if self.rect.x >= self.fin or self.rect.x <= self.deb:
-            self.vitesse = -self.vitesse
-        self.rect.x += self.vitesse
+        if self.xd != self.xf:
+            if self.rect.x >= self.xf or self.rect.x <= self.xd:
+                self.vitesse = -self.vitesse
+            self.rect.x += self.vitesse
+        if self.yf != self.yd:
+            if self.rect.y >= self.yf or self.rect.y <= self.yd:
+                self.vitesse_y = -self.vitesse_y
+            self.rect.y += self.vitesse_y
         self.update()
-            
