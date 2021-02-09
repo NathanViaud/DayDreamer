@@ -23,12 +23,18 @@ class joueurxD(pygame.sprite.Group):
         self.enSaut = False
         self.jumpCount = 27
         self.screen = screen
+        self.rect = self.image.get_rect()
+        self.rect.x = self.pos_x
+        self.rect.y = self.pos_y
+        self.width = self.image.get_width()
+        self.height = self.image.get_height()
 
     def deplace(self, vitesse):
         fond_a_decal = True
         if vitesse > 0:
             if self.pos_x <= 420:
                 self.pos_x += vitesse
+                self.rect.x = self.pos_x
                 fond_a_decal = False
             self.image = marchedroite[self.pose]
             self.pose += 1
@@ -37,6 +43,7 @@ class joueurxD(pygame.sprite.Group):
         elif vitesse < 0:
             if self.pos_x >= 420:
                 self.pos_x += vitesse
+                self.rect.x = self.pos_x
                 fond_a_decal = False
             self.image = marchegauche[self.pose]
             self.pose += 1
@@ -53,21 +60,18 @@ class joueurxD(pygame.sprite.Group):
             self.pose = 0 
 
     def saut(self, plateforme):
-        rect = pygame.Rect(418, 600, 100, 10)
         if self.enSaut:
             if self.jumpCount >= -27:
                 neg = 1
                 if self.jumpCount < 0:
                     if plateforme != 0:
-                        if rect.collidepoint(self.pos_x+66,self.pos_y+153):
+                        if plateforme.colliderect(self.rect.x,self.rect.y+self.width, self.width, self.height):
                             print("collide")
                             self.enSaut = False
                             self.jumpCount = 27
                     neg = -1
-                    print(str(self.pos_x+66) + " | " + str(self.pos_y+153))
-                    print(str(rect.x) + " | " + str(rect.y))
-
                 self.pos_y -= self.jumpCount**2*0.1*neg
+                self.rect.y = self.pos_y
                 self.jumpCount -= 3
             else:
                 self.enSaut = False

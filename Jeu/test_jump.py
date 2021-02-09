@@ -4,6 +4,7 @@ from joueurxD import joueurxD
 
 from fond import *
 from plateforme import *
+from player import *
 
 pygame.init()
 
@@ -23,53 +24,23 @@ enSaut = False
 course = pygame.mixer.Sound("./son/course.wav")
 saut = pygame.mixer.Sound("./son/saut.wav")
 
-joueur = joueurxD(3, 600, screen)
-
-fond = fond(pygame.image.load("images/fond.png"))
-
-all_sprites = pygame.sprite.Group()
-
-all_sprites.add(joueur)
-
-
-p1 = plateforme((500, 600))
-p2 = plateforme((750, 600))
+p1 = plateforme(500, 450, screen)
+p2 = plateforme(750, 550, screen)
 
 plateformes = [p1, p2]
+fond = fond(pygame.image.load("images/fond.png"), screen)
 
-vitesse = 0
+
+joueur = player(3, 600, screen, plateformes, fond)
+
 
 while joue:
+    screen.blit(fond.img, (fond.pos_x, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             joue = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                joue = False
-            if event.key == pygame.K_UP:
-                joueur.enSaut = True
-            if event.key == pygame.K_LEFT:
-                vitesse = -5
-            if event.key == pygame.K_RIGHT:
-                vitesse = 5
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                vitesse = 0
-            elif event.key == pygame.K_RIGHT:
-                vitesse = 0
-
-    fonddeplace = joueur.deplace(vitesse)
-    if fonddeplace :
-        fond.droite(vitesse)
-        for i in plateformes:
-            i.droite(vitesse)
-    all_sprites.draw(screen)
-    screen.blit(fond.img, (fond.pos_x, 0))
+    joueur.update()
     for i in plateformes:
-        pygame.draw.rect(screen, (255,0,0), i.rect)
-    pygame.time.wait(60)
-    joueur.draw()
-    joueur.saut(p1.rect)
-    joueur.immobile(vitesse)
-    pygame.display.flip()
+        i.update()
+    pygame.display.update()
 pygame.quit()
