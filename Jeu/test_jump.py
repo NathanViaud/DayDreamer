@@ -57,8 +57,8 @@ tutorial = True
 #texte a afficher
 white = (255,255,255)
 font = pygame.font.Font(None, 50)
-mouvement_tuto = font.render("Utilizes les fleches pour bouger", True, white)
-saut = font.render("Pour sauter utilizes la touche espace", True, white)
+mouvement_tuto = font.render("Utilisez les fleches pour bouger", True, white)
+saut = font.render("Pour sauter utilisez la touche espace", True, white)
 
 # Sol du terrain
 sol = plateforme(0, 750, screen, 8196, 18)
