@@ -91,7 +91,11 @@ def genTuto():
         obs = []
         obstacle1 = obstacles(1500, 550, screen)
         obs.append(obstacle1)
-        return world(fond, plateformes, fruits, ennemis, obs)
+
+        #clé
+        cle1 = cle(1400, 400, screen)
+
+        return world(fond, plateformes, fruits, ennemis, obs, cle1)
 
 tuto = genTuto()
 # Joueur:

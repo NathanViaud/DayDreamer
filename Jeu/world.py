@@ -3,14 +3,16 @@ import pygame
 from player import *
 from fond import *
 from plateforme import *
+from cle import *
 
 class world():
-    def __init__(self, fond, plateformes, fruits, ennemis, obstacles):
+    def __init__(self, fond, plateformes, fruits, ennemis, obstacles, cle):
         self.plateformes = plateformes
         self.fond = fond
         self.fruits = fruits
         self.ennemis = ennemis
         self.obstacles = obstacles
+        self.cle = cle
 
     def deplacement(self, vitesse):
         vitesse = -vitesse
@@ -23,6 +25,7 @@ class world():
             ennemi.deplacement(vitesse)
         for obstacle in self.obstacles:
             obstacle.deplacement(vitesse)
+        self.cle.deplacement(vitesse)
 
 
     def droite(self, vitesse):
@@ -57,9 +60,13 @@ class world():
             ennemi.update()
         for obstacle in self.obstacles:
             obstacle.update()
+        self.cle.update()
 
     def removeFruit(self, fruit):
         for f in self.fruits:
             if f == fruit:
                 self.fruits.remove(fruit)
         self.update()
+
+    def removeCle(self):
+        self.cle = 0

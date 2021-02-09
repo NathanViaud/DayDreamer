@@ -92,6 +92,9 @@ class player():
             if obstacle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
                 self.mort = True
 
+        if self.world.cle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
+            self.world.cle.prendreCle()
+
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:
                 if self.rect.x <= w -30:
