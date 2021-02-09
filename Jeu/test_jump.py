@@ -23,6 +23,10 @@ def genTuto():
         p_saut3 = plateforme(1900, 600, screen, 100, 10)
         p_saut4 = plateforme(2400,700, screen, 50, 50)
         p_saut5 = plateforme(2662,700, screen, 50, 50)
+        p_sautfruit1 = plateforme(3000, 600, screen, 100, 10)
+        p_sautfruit2 = plateforme(3200, 450, screen, 100, 10)
+        p_sautfruit3 = plateforme(3400, 250, screen, 100, 10)
+        p_porte = plateforme(4000, 0, screen, 100,768)
         plateformes = []
         plateformes.append(sol)
         plateformes.append(p_saut1)
@@ -30,13 +34,19 @@ def genTuto():
         plateformes.append(p_saut3)
         plateformes.append(p_saut4)
         plateformes.append(p_saut5)
+        plateformes.append(p_sautfruit1)
+        plateformes.append(p_sautfruit2)
+        plateformes.append(p_sautfruit3)
+        plateformes.append(p_porte)
 
         # Fruits du niveau:
         fruits = []
-        f1 = fruit(800, 600, screen)
-        f2 = fruit(1100, 400, screen)
+        f1 = fruit(3035, 555, screen)
+        f2 = fruit(3235, 400, screen)
+        f3 = fruit(3435, 200, screen)
         fruits.append(f1)
         fruits.append(f2)
+        fruits.append(f3)
 
         # Enemis:
         ennemis = []
@@ -57,7 +67,7 @@ def genTuto():
         fond.pos_x = 0
 
         #lit
-        l1 = lit(5400, 700, screen)
+        l1 = lit(3800, 700, screen)
 
         fond.reset()
         
@@ -109,6 +119,7 @@ white = (255,255,255)
 font = pygame.font.Font(None, 50)
 mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, white)
 saut = font.render("Pour sauter utilisez la barre espace", True, white)
+fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, white)
 
 tuto = genTuto()
 # Joueur:
@@ -128,8 +139,9 @@ while joue:
     joueur.deplaceAnimation()
     joueur.update()
     if tutorial == True:
-        screen.blit(mouvement_tuto, (fond.pos_x+100, 200))
-        screen.blit(saut, (fond.pos_x +1000,200))
+        screen.blit(mouvement_tuto, (fond.pos_x+50, 200))
+        screen.blit(saut, (fond.pos_x +1200,200))
+        screen.blit(fruits_message, (fond.pos_x+2500, 200))
     pygame.display.update()
 
     while joueur.mort and joue:
