@@ -59,7 +59,6 @@ white = (255,255,255)
 font = pygame.font.Font(None, 50)
 mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, white)
 saut = font.render("Pour sauter utilisez la barre espace", True, white)
-<<<<<<< Updated upstream
 def genTuto():
         # Sol du terrain
         sol = plateforme(0, 750, screen, 8196, 18)
@@ -90,8 +89,12 @@ def genTuto():
 
         # Piques ( A changer)
         obs = []
-        obstacle1 = obstacles(1500, 550, screen)
+        obstacle1 = obstacles(2460, 690, screen)
+        obstacle2 = obstacles(2524, 690, screen)
+        obstacle3 = obstacles(2588, 690, screen)
         obs.append(obstacle1)
+        obs.append(obstacle2)
+        obs.append(obstacle3)
 
         #clé
         cle1 = cle(1400, 400, screen)
@@ -99,51 +102,6 @@ def genTuto():
         return world(fond, plateformes, fruits, ennemis, obs, cle1)
 
 tuto = genTuto()
-=======
-
-
-# Sol du terrain
-sol = plateforme(0, 750, screen, 8196, 18)
-p_saut1 = plateforme(1300, 600, screen, 100, 10)
-p_saut2 = plateforme(1600, 450, screen, 100, 10)
-p_saut3 = plateforme(1900, 600, screen, 100, 10)
-p_saut4 = plateforme(2400,700, screen, 50, 50)
-p_saut5 = plateforme(2662,700, screen, 50, 50)
-plateformes = []
-plateformes.append(sol)
-plateformes.append(p_saut1)
-plateformes.append(p_saut2)
-plateformes.append(p_saut3)
-plateformes.append(p_saut4)
-plateformes.append(p_saut5)
-
-# Fruits du niveau:
-fruits = []
-f1 = fruit(800, 600, screen)
-f2 = fruit(1100, 400, screen)
-fruits.append(f1)
-fruits.append(f2)
-
-# Enemis:
-e1 = ennemi(2, 900, 350, screen, 900, 900, 1, 250, 500, 1)
-ennemis = [e1]
-
-# Piques ( A changer)
-obs = []
-obstacle1 = obstacles(2460, 690, screen)
-obstacle2 = obstacles(2524, 690, screen)
-obstacle3 = obstacles(2588, 690, screen)
-obs.append(obstacle1)
-obs.append(obstacle2)
-obs.append(obstacle3)
-
-#clé
-cle1 = cle(1400, 400, screen)
-
-tuto = world(fond, plateformes, fruits, ennemis, obs, cle1)
-
-
->>>>>>> Stashed changes
 # Joueur:
 joueur = player(3, 600, screen, tuto)
 
