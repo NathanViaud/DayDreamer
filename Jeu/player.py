@@ -24,16 +24,18 @@ class player():
         self.index = 0
 
         self.images_l.append(img)
-        self.images_l.append(pygame.image.load("sprites/droite1.png"))
         self.images_l.append(img)
-        self.images_l.append(pygame.image.load("sprites/droite2.png"))
+        self.images_l.append(img)
+        self.images_l.append(img)
 
         self.images_r.append(img)
-        self.images_r.append(pygame.image.load("sprites/gauche1.png"))
         self.images_r.append(img)
-        self.images_r.append(pygame.image.load("sprites/gauche2.png"))
+        self.images_r.append(img)
+        self.images_r.append(img)
 
         self.direction = ""
+
+        self.last_plateform = world.plateformes[0]
 
     def update(self):
         
@@ -44,7 +46,7 @@ class player():
 
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and self.jumped == False:
-            self.vel_y = -10
+            self.vel_y = -7.5
             self.jumped = True
         if key[pygame.K_LEFT]:
             self.direction = "gauche"
@@ -64,13 +66,17 @@ class player():
             if plateforme.rect.colliderect(self.rect.x+vx, self.rect.y, self.width, self.height):
                 vx =0
             if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
+                self.last_plateform = plateforme
                 if self.vel_y < 0:
                     dy = plateforme.rect.bottom - self.rect.top
                     self.vel_y = 0
                 elif self.vel_y > 0:
                     dy = plateforme.rect.top - self.rect.bottom
                     self.vel_y = 0
-                self.jumped = False
+                if self.rect.bottom == plateforme.rect.top:
+                    self.jumped = False
+            if self.rect.bottom != self.last_plateform.rect.top:
+                    self.jumped = True
                 
         for fruit in self.world.fruits:
             if fruit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
@@ -86,8 +92,8 @@ class player():
             self.rect.x += vx
         self.rect.y += dy
 
-        if self.rect.bottom > self.screen.get_height():
-            self.rect.bottom = self.screen.get_height()
+        if self.rect.bottom > 750:
+            self.rect.bottom = 750
             dy = 550
             self.jumped = False
 

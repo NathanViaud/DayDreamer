@@ -27,10 +27,14 @@ enSaut = False
 course = pygame.mixer.Sound("./son/course.wav")
 saut = pygame.mixer.Sound("./son/saut.wav")
 
-p1 = plateforme(250, 450, screen)
+p1 = plateforme(450, 450, screen)
 p2 = plateforme(750, 550, screen)
 
-plateformes = [p1, p2]
+plateformes = []
+
+plateformes.append(p1)
+plateformes.append(p2)
+
 fond = fond(pygame.image.load("images/fond.png"), screen)
 f1 = fruit(800, 740, screen)
 f2 = fruit(1700, 740, screen)
