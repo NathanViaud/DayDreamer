@@ -4,7 +4,7 @@ from plateforme import *
 from fond import *
 
 class player():
-    def __init__(self, x ,y, screen, world, fond):
+    def __init__(self, x ,y, screen, world):
         img = pygame.image.load("sprites/idle.png")
         self.screen = screen
         self.world = world
@@ -32,20 +32,12 @@ class player():
             self.jumped = False
         if key[pygame.K_LEFT]:
             if self.rect.x <= w/2:
-                self.fond.gauche(2)
-                for i in self.world:
-                    i.gauche(2)
-                    i.update()
-                self.fond.update()
+                self.world.gauche(2)
             else:
                 dx -= 2
         if key[pygame.K_RIGHT]:
             if self.rect.x >= w/2:
-                self.fond.droite(2)
-                for i in self.world:
-                    i.droite(2)
-                    i.update()
-                self.fond.update()
+                self.world.droite(2)
             else:
                 dx += 2
         
@@ -56,11 +48,19 @@ class player():
         dy += self.vel_y
 
 
-        if self.world[0].rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
-            if self.vel_y < 0:
-                dy = self.world[0].rect.bottom - self.rect.top
-            if self.vel_y > 0:
-                dy = self.world[0].rect.top - self.rect.bottom
+        for plateforme in self.world.plateformes:
+            if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
+                if self.vel_y < 0:
+                    dy = plateforme.rect.bottom - self.rect.top
+                if self.vel_y > 0:
+                    dy = plateforme.rect.top - self.rect.bottom
+        for fruit in self.world.fruits:
+            if fruit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
+                self.world.removeFruit(fruit)
+
+        for ennemi in self.world.ennemis:
+            if ennemi.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
+                print("touché")
 
 
         self.rect.x += dx

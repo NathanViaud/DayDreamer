@@ -6,11 +6,13 @@ class fond:
         self.pos_x= 0
         self.screen = screen
 
+    def update(self):
+        self.screen.blit(self.img, (self.pos_x, 0))
+
     def droite(self, vitesse):
         self.pos_x -=  vitesse
+        self.update()
 
     def gauche(self, vitesse):
         self.pos_x +=  vitesse
-
-    def update(self):
-        self.screen.blit(self.img, (self.pos_x, 0))
+        self.update()

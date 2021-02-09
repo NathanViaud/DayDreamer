@@ -5,6 +5,9 @@ from joueurxD import joueurxD
 from fond import *
 from plateforme import *
 from player import *
+from world import *
+from fruit import *
+from ennemi import *
 
 pygame.init()
 
@@ -29,18 +32,26 @@ p2 = plateforme(750, 550, screen)
 
 plateformes = [p1, p2]
 fond = fond(pygame.image.load("images/fond.png"), screen)
+f1 = fruit(800, 740, screen)
+f2 = fruit(1700, 740, screen)
+fruits = [f1, f2]
 
+e1 = ennemi(700, 678, screen)
+ennemis =  [e1]
+world = world(fond, plateformes, fruits, ennemis)
 
-joueur = player(3, 600, screen, plateformes, fond)
+joueur = player(3, 600, screen, world)
 
-
+fin = 1700
+deb = 600
+vitesse = 1
 while joue:
     screen.blit(fond.img, (fond.pos_x, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             joue = False
+    world.update()
+    e1.moveE(vitesse, deb, fin)
     joueur.update()
-    for i in plateformes:
-        i.update()
     pygame.display.update()
 pygame.quit()
