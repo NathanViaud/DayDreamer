@@ -15,9 +15,9 @@ class plateforme():
         pygame.draw.rect(self.screen, (255, 0, 0), self.rect, 2)
         
     def droite(self, vitesse):
-        self.rect.x -=  vitesse
+        self.rect.x -= vitesse
         self.update()
 
     def gauche(self, vitesse):
-        self.rect.x +=  vitesse
+        self.rect.x += vitesse
         self.update()
