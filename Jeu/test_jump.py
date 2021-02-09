@@ -36,8 +36,10 @@ f1 = fruit(800, 740, screen)
 f2 = fruit(1700, 740, screen)
 fruits = [f1, f2]
 
-e1 = ennemi(700, 678, screen, 300, 900, 1)
-ennemis =  [e1]
+e1 = ennemi(1, 700, 678, screen, 300, 900, 1)
+e2 = ennemi(2, 1500, 350, screen, 1000, 1900, 1)
+
+ennemis =  [e1, e2]
 world = world(fond, plateformes, fruits, ennemis)
 
 joueur = player(3, 600, screen, world)
@@ -53,7 +55,8 @@ while joue:
         if event.type == pygame.QUIT:
             joue = False
     world.update()
-    e1.moveE()
+    for ennemi in ennemis:
+        ennemi.moveE()
     joueur.deplaceAnimation()
     joueur.update()
     pygame.display.update()
