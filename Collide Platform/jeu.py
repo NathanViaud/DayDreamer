@@ -10,7 +10,7 @@ fps = 60
 size = (1024, 768)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("DayDreamer")
-bg_img = pygame.image.load("images/fond.png")
+bg_img = pygame.image.load('images/fond.png')
 
 joue = True
 world = []

@@ -35,12 +35,12 @@ class Player():
         if key[pygame.K_LEFT]:
             dx -= 2
             self.counter += 1
-            self.direction = "izquierda"
+            self.direction = "gauche"
         if key[pygame.K_RIGHT]:
             dx += 2
             self.index += 1
             self.counter += 1
-            self.direction = "derecha"
+            self.direction = "droite"
         if key[pygame.K_RIGHT] == False and key[pygame.K_LEFT] == False:
             self.image = self.images_r[0]
             self.counter = 0
@@ -48,11 +48,13 @@ class Player():
 
 
         if self.counter > mov_cooldown:
+            self.counter = 0
+            self.index += 1
             if self.index >= len(self.images_r):
                 self.index = 0
-            if self.direction == "derecha":
+            if self.direction == "droite":
                 self.image = self.images_r[self.index]
-            if self.direction == "izquierda":
+            if self.direction == "gauche":
                 self.image = self.images_l[self.index]
 
         self.vel_y += 0.1
@@ -60,12 +62,15 @@ class Player():
             self.vel_y = 2
         dy += self.vel_y
 
-
+        if self.world[0].rect.colliderect(self.rect.x+dx, self.rect.y, self.width, self.height):
+            dx = 0
         if self.world[0].rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
             if self.vel_y < 0:
                 dy = self.world[0].rect.bottom - self.rect.top
-            if self.vel_y > 0:
+                self.vel_y = 0
+            elif self.vel_y > 0:
                 dy = self.world[0].rect.top - self.rect.bottom
+                self.vel_y = 0
             self.jumped = False
 
 
