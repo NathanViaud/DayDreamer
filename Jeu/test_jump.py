@@ -136,8 +136,4 @@ while joue:
                     joueur.mort = False
                     tuto = genTuto()
                     joueur = player(3, 600, screen, tuto)
-                    
-                print("retry")
-                print(joueur.mort)
-    print(joueur.mort)
 pygame.quit()
