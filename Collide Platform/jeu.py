@@ -5,7 +5,7 @@ from platform import *
 pygame.init()
 
 clock = pygame.time.Clock()
-fps = 60
+fps = 15
 
 size = (1024, 768)
 screen = pygame.display.set_mode(size)
@@ -25,8 +25,8 @@ while joue:
         if event.type == pygame.QUIT:
             joue = False
 
+    player.deplaceAnimation()
     player.update()
     platform.update()
-    pygame.time.wait(1)
     pygame.display.update()
 pygame.quit()

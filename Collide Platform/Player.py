@@ -1,17 +1,32 @@
 import pygame
 
+immobile = pygame.image.load("sprites/player1.png")
+
 class Player():
     def __init__(self, x ,y, screen, world):
         self.images_r = []
         self.images_l = []
         self.index = 0
-        self.counter = 0
-        for num in range (1,3):
-            img_r = pygame.image.load(f'./sprites/player{num}.png')
-            img_l = pygame.transform.flip(img_r, True, False)
-            self.images_r.append(img_r)
-            self.images_l.append(img_l)
-        self.image = self.images_r[self.index]
+
+        for i in range (1,3):
+            self.images_l.append(immobile)
+        for i in range (1,3):
+            self.images_l.append(pygame.image.load("sprites/player2.png"))
+        for i in range (1,3):
+            self.images_l.append(immobile)
+        for i in range (1,3):
+            self.images_l.append(pygame.image.load("sprites/player3.png"))
+
+        for i in range (1,3):
+            self.images_r.append(immobile)
+        for i in range (1,3):
+            self.images_r.append(pygame.image.load("sprites/droite1.png"))
+        for i in range (1,3):
+            self.images_r.append(immobile)
+        for i in range (1,3):
+            self.images_r.append(pygame.image.load("sprites/droite2.png"))
+
+        self.image = immobile
         self.screen = screen
         self.world = world
         self.rect = self.image.get_rect()
@@ -21,9 +36,12 @@ class Player():
         self.height = self.image.get_height()
         self.vel_y = 0
         self.jumped = False
-        self.direction = " "
+        self.direction = ""
 
     def update(self):
+
+        if self.index >= 7:
+            self.index = 0
 
         dx = 0
         dy = 0
@@ -33,29 +51,19 @@ class Player():
             self.vel_y = -10
             self.jumped = True
         if key[pygame.K_LEFT]:
-            dx -= 2
-            self.counter += 1
+            dx -= 10
+            self.index += 1
             self.direction = "gauche"
         if key[pygame.K_RIGHT]:
-            dx += 2
+            dx += 10
             self.index += 1
-            self.counter += 1
             self.direction = "droite"
         if key[pygame.K_RIGHT] == False and key[pygame.K_LEFT] == False:
-            self.image = self.images_r[0]
-            self.counter = 0
+            self.image = immobile
             self.index = 0
-
-
-        if self.counter > mov_cooldown:
-            self.counter = 0
-            self.index += 1
-            if self.index >= len(self.images_r):
-                self.index = 0
-            if self.direction == "droite":
-                self.image = self.images_r[self.index]
-            if self.direction == "gauche":
-                self.image = self.images_l[self.index]
+        if key[pygame.K_RIGHT] and key[pygame.K_LEFT]:
+            self.image = immobile
+            self.index = 0
 
         self.vel_y += 0.1
         if self.vel_y > 2:
@@ -81,6 +89,16 @@ class Player():
             self.rect.bottom = self.screen.get_height()
             dy = 550
             self.jumped = False
-
+        
+        print(self.index)
         self.screen.blit(self.image, self.rect)
         pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)
+
+
+    def deplaceAnimation(self):
+        if self.direction == "gauche":
+            self.image = self.images_r[self.index]
+        elif self.direction == "droite":
+            self.image = self.images_l[self.index]
+        else:
+            self.image = immobile
