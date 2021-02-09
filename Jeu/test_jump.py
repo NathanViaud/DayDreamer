@@ -61,7 +61,7 @@ def genTuto():
 
         fond.reset()
         
-        return world(fond, plateformes, fruits, ennemis, obs, cle1)
+        return world(fond, plateformes, fruits, ennemis, obs, cle1, l1)
 
 VITESSE_SAUT = 40
 HAUTEUR_SAUT = 100
