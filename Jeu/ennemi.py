@@ -1,8 +1,9 @@
 import pygame
 
 class ennemi():
-    def __init__(self, x, y, screen , deb, fin, vitesse):
-        img = pygame.image.load("sprites/ennemis/e1.png")
+    def __init__(self, type, x, y, screen , deb, fin, vitesse):
+        self.type = type
+        img = pygame.image.load("sprites/ennemis/e" + str(type) + ".png")
         self.img = img
         self.rect = self.img.get_rect()
         self.rect.x = x
