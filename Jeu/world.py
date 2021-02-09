@@ -6,13 +6,14 @@ from plateforme import *
 from cle import *
 
 class world():
-    def __init__(self, fond, plateformes, fruits, ennemis, obstacles, cle):
+    def __init__(self, fond, plateformes, fruits, ennemis, obstacles, cle, lit):
         self.plateformes = plateformes
         self.fond = fond
         self.fruits = fruits
         self.ennemis = ennemis
         self.obstacles = obstacles
         self.cle = cle
+        self.lit = lit
 
     def deplacement(self, vitesse):
         vitesse = -vitesse
@@ -26,29 +27,7 @@ class world():
         for obstacle in self.obstacles:
             obstacle.deplacement(vitesse)
         self.cle.deplacement(vitesse)
-
-
-    def droite(self, vitesse):
-        self.fond.droite(vitesse)
-        for plateforme in self.plateformes:
-            plateforme.droite(vitesse)
-        for fruit in self.fruits:
-            fruit.droite(vitesse)
-        for ennemi in self.ennemis:
-            ennemi.droite(vitesse)
-        for obstacle in self.obstacles:
-            obstacle.deplacement(vitesse)
-
-    def gauche(self, vitesse):
-        self.fond.gauche(vitesse)
-        for plateforme in self.plateformes:
-            plateforme.gauche(vitesse)
-        for fruit in self.fruits:
-            fruit.gauche(vitesse)
-        for ennemi in self.ennemis:
-            ennemi.gauche(vitesse)
-        for obstacle in self.obstacles:
-            obstacle.deplacement(vitesse)
+        self.lit.deplacement(vitesse)
 
     def update(self):
         self.fond.update()
@@ -61,6 +40,7 @@ class world():
         for obstacle in self.obstacles:
             obstacle.update()
         self.cle.update()
+        self.lit.update()
 
     def removeFruit(self, fruit):
         for f in self.fruits:

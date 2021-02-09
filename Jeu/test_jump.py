@@ -10,6 +10,7 @@ from world import *
 from fruit import *
 from ennemi import *
 from obstacles import *
+from lit import *
 
 pygame.init()
 
@@ -99,7 +100,12 @@ def genTuto():
         #clé
         cle1 = cle(1400, 400, screen)
 
-        return world(fond, plateformes, fruits, ennemis, obs, cle1)
+        #lit
+        l1 = lit(5400, 700, screen)
+
+        fond.reset()
+
+        return world(fond, plateformes, fruits, ennemis, obs, cle1, l1)
 
 tuto = genTuto()
 # Joueur:

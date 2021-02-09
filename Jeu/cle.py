@@ -21,3 +21,4 @@ class cle():
         self.prise= True
         transparent = (0, 0, 0, 0)
         self.img.fill(transparent)
+
