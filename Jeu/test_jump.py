@@ -35,7 +35,7 @@ plateformes = []
 plateformes.append(p1)
 plateformes.append(p2)
 
-fond = fond(pygame.image.load("images/fond.png"), screen)
+fond = fond(pygame.image.load("images/fond.png"), screen, 8196)
 f1 = fruit(800, 740, screen)
 f2 = fruit(1700, 740, screen)
 fruits = [f1, f2]

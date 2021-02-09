@@ -85,18 +85,28 @@ class player():
         for ennemi in self.world.ennemis:
             if ennemi.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
                 print("touché")
-                
-        if self.rect.x > w/2 and self.direction == "droite" or self.rect.x < w/2 and self.direction == "gauche" :
-            self.world.deplacement(vx)
-        else:
-            self.rect.x += vx
-        self.rect.y += dy
 
+        if self.direction == "droite":
+            if self.world.fond.pos_x <= -self.world.fond.taille + w:
+                if self.rect.x <= w -30:
+                    self.rect.x += vx
+            elif self.rect.x <= w/2 -15:
+                self.rect.x += vx
+            else:
+                self.world.deplacement(vx)
+        elif self.direction == "gauche":
+            if self.rect.x >= w/2:
+                self.rect.x += vx
+            elif self.world.fond.pos_x >= 0:
+                if self.rect.x >= 0: 
+                    self.rect.x += vx
+            else:
+                self.world.deplacement(vx)
+        self.rect.y += dy
         if self.rect.bottom > 750:
             self.rect.bottom = 750
             dy = 550
             self.jumped = False
-
         self.screen.blit(self.image, self.rect)
         pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)
 
