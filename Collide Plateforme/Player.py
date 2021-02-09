@@ -23,12 +23,10 @@ class Player():
         if key[pygame.K_SPACE] and self.jumped == False:
             self.vel_y = -10
             self.jumped = True
-        if key[pygame.K_SPACE] == False:
-            self.jumped = False
         if key[pygame.K_LEFT]:
-            dx -= 2 
+            dx -= 1
         if key[pygame.K_RIGHT]:
-            dx += 2
+            dx += 1
         
 
         self.vel_y += 0.1
@@ -42,6 +40,7 @@ class Player():
                 dy = self.world[0].rect.bottom - self.rect.top
             if self.vel_y > 0:
                 dy = self.world[0].rect.top - self.rect.bottom
+            self.jumped = False
 
 
         self.rect.x += dx
@@ -50,6 +49,7 @@ class Player():
         if self.rect.bottom > self.screen.get_height():
             self.rect.bottom = self.screen.get_height()
             dy = 550
+            self.jumped = False
 
         self.screen.blit(self.image, self.rect)
         pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)

@@ -1,2 +1,4 @@
 Jeu/__pycache__/*.pyc
 Jeu/__pycache__/joueurxD.cpython-39.pyc
+Collide Plateforme/__pycache__/Player.cpython-39.pyc
+Collide Plateforme/__pycache__/platform.cpython-39.pyc

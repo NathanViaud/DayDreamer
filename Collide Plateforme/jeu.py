@@ -23,5 +23,6 @@ while joue:
 
     player.update()
     platform.update()
+    pygame.time.wait(1)
     pygame.display.update()
 pygame.quit()
