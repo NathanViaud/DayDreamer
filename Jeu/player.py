@@ -45,7 +45,7 @@ class player():
         self.dort = not self.dort
 
     def update(self):
-        
+        commandes = pygame.key.get_pressed()
         w, h = pygame.display.get_surface().get_size()
         vx = 0
         dy = 0
@@ -101,10 +101,9 @@ class player():
                 self.world.cle.prendreCle()
 
         if self.world.lit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
-            for event in pygame.event.get():
-                if event.type == pygame.KEYUP:
-                    if event.key == pygame.K_f:
-                        self.world.sleep()
+            if commandes[pygame.K_f]:
+                pygame.time.wait(1500)
+                self.world.sleep()
           
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:
