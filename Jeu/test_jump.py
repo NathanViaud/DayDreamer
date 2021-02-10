@@ -80,7 +80,7 @@ def genTuto():
     cle1 = cle(5280, 400, screen)
 
     #lit
-    l1 = lit(3800, 700, screen)
+    l1 = lit(3800, 735, screen)
 
     # Sortie
     sort = sortie(5750, 622, screen)
@@ -107,36 +107,23 @@ mort = pygame.image.load("images/mort.png")
 course = pygame.mixer.Sound("./son/course.wav")
 saut = pygame.mixer.Sound("./son/saut.wav")
 
-#p_saut1 = plateforme(450, 450, screen)
-#p_saut2 = plateforme(750, 550, screen)
-
-# plateformes = []
-# 
-# plateformes.append(p_saut1)
-# plateformes.append(p_saut2)
-# 
-# f1 = fruit(800, 740, screen)
-# f2 = fruit(1700, 740, screen)
-# fruits = [f1, f2]
-# 
-# e1 = ennemi(1, 700, 678, screen, 300, 900, 1)
-# e2 = ennemi(2, 1500, 350, screen, 1000, 1900, 1)
-# 
-# ennemis =  [e1, e2]
-# world = world(fond, plateformes, fruits, ennemis)
-# 
-# joueur = player(3, 600, screen, world)
-
-
 # World tutoriel:
 tutorial = True
 
-white = (255,255,255)
+black = (0,0,0)
 #texte a afficher
-font = pygame.font.Font(None, 50)
-mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, white)
-saut = font.render("Pour sauter utilisez la barre espace", True, white)
-fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, white)
+font = pygame.font.Font(None, 40)
+bienvenu = font.render("Bievnue a DayDreaming !", True, black)
+mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, black)
+saut = font.render("Pour sauter utilisez la barre espace", True, black)
+font = pygame.font.Font(None, 30)
+fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, black)
+lit_message = font.render("Utilizes la touche F pour dormir dans le lit", True, black)
+cle_message = font.render("Prenez la clé pour ouvrir la porte", True, black)
+porte_message = font.render("Utilisez la porte pour finir le Tutoriel", True, black)
+font = pygame.font.Font(None, 40)
+enemies_messsage = font.render("Attention aux enemies ! ", True, black)
+
 # Joueur:
 joueur = player(3, 600, screen, tuto)
 
@@ -158,9 +145,14 @@ while monde:
         joueur.deplaceAnimation()
         joueur.update()
         if tutorial == True:
-            screen.blit(mouvement_tuto, (tuto.fond.pos_x+50, 200))
+            screen.blit(bienvenu, (tuto.fond.pos_x+50,200))
+            screen.blit(mouvement_tuto, (tuto.fond.pos_x+50, 300))
             screen.blit(saut, (tuto.fond.pos_x +1200,200))
-            screen.blit(fruits_message, (tuto.fond.pos_x+2500, 200))
+            screen.blit(fruits_message, (tuto.fond.pos_x+2900, 500))
+            screen.blit(lit_message, (tuto.fond.pos_x+3595,650))
+            screen.blit(enemies_messsage, (tuto.fond.pos_x+4250, 200))
+            screen.blit(cle_message, (tuto.fond.pos_x+5200,350))
+            screen.blit(porte_message, (tuto.fond.pos_x+5700, 500))
         pygame.display.update()
 
         while joueur.mort and joue:
