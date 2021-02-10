@@ -1,6 +1,10 @@
 import pygame
 
 burger = [pygame.image.load("sprites/ennemis/burger_bas.png"), pygame.image.load("sprites/ennemis/burger_mid.png"), pygame.image.load("sprites/ennemis/burger_haut.png"), pygame.image.load("sprites/ennemis/burger_mid.png")]
+pizza = [pygame.image.load("sprites/ennemis/pizza1.png"), pygame.image.load("sprites/ennemis/pizza2.png"), pygame.image.load("sprites/ennemis/pizza3.png"), pygame.image.load("sprites/ennemis/pizza4.png")]
+pizza_reverse = []
+for piz in pizza:
+    pizza_reverse.append(pygame.transform.flip(piz, True, False))
 
 class ennemi():
     #type : 1 = au sol 2 = volant
@@ -12,7 +16,10 @@ class ennemi():
     #vitesse_y : vitesse en y
     def __init__(self, type, x, y, screen , xd, xf, vitesse, yd, yf, vitesse_y):
         self.type = type
-        self.img = burger[0]
+        if self.type == 1:
+            self.img = pizza[0]
+        elif self.type == 2:
+            self.img = burger[0]
         self.rect = self.img.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -47,13 +54,18 @@ class ennemi():
                 self.vitesse_y = -self.vitesse_y
             self.rect.y += self.vitesse_y
         self.update()
-        print(self.frame)
 
     def animation(self):
         if self.frame > 3:
             self.frame = 0
         if self.fps % 30 == 0:
-            self.img = burger[self.frame]
+            if self.type == 1:
+                if self.vitesse < 0:
+                    self.img = pizza_reverse[self.frame]
+                else:
+                    self.img = pizza[self.frame]
+            elif self.type == 2:
+                self.img = burger[self.frame]
             self.frame += 1
         if self.fps > 30:
             self.fps = 0

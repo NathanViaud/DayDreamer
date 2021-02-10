@@ -70,7 +70,7 @@ class genLevel():
 
         # Enemis:
         e1 = ennemi(2, 4470, 500, self.screen, 4470, 4470, 1, 300, 650, 2)
-        e2 = ennemi(1, 4800, 350, self.screen, 4799, 5050, 2, 350, 350, 1)
+        e2 = ennemi(1, 4800, p_cle2.rect.y - pygame.image.load("sprites/ennemis/pizza1.png").get_height(), self.screen, 4799, 5050, 2, 350, 350, 1)
         ennemis = []
         ennemis.append(e1)
         ennemis.append(e2)
