@@ -88,7 +88,8 @@ class player():
                 vx =0
                 if plateforme.type == "porte":
                     if self.cle == True:
-                        self.world.removePorte()
+                        print("ouvrir porte")
+                        plateforme.removePorte()
             if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
                 self.last_plateform = plateforme
                 if self.vel_y < 0:
