@@ -165,8 +165,15 @@ class player():
         if self.jumped:
             if self.direction == "droite":
                 self.image = jump
-            else:
+            elif self.direction == "gauche":
                 self.image = jump_reverse
+            else:
+                if self.last_direction == "droite":
+                    self.image = jump
+                elif self.last_direction == "gauche":
+                    self.image = jump_reverse
+                else:
+                    self.image = jump
         else:
             if self.index > 3:
                 self.index = 0
