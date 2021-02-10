@@ -157,7 +157,7 @@ class player():
             dy = 550
             self.jumped = False
         self.screen.blit(self.image, self.rect)
-        pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)
+        #pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)
 
   
 
