@@ -61,3 +61,4 @@ class world():
            fruit.sleep()
         for plateforme in self.plateformes:
             plateforme.sleep()
+        self.cle.sleep()

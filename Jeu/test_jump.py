@@ -125,7 +125,7 @@ font = pygame.font.Font(None, 40)
 enemies_messsage = font.render("Attention aux enemies ! ", True, black)
 
 # Joueur:
-joueur = player(3, 600, screen, tuto)
+joueur = player(3, 100, screen, tuto)
 
 monde = True
 

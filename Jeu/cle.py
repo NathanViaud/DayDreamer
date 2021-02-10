@@ -27,6 +27,11 @@ class cle():
     def sleep(self):
         self.nuit = not self.nuit
         if self.nuit == False:
+            print("salut")
             transparent = (0, 0, 0, 0)
             self.img.fill(transparent)
+        else:
+            if self.prise == False:
+                img = pygame.image.load("sprites/items/cle.png")
+                self.img = img
 

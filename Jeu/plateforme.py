@@ -20,7 +20,8 @@ class plateforme():
         self.nuit = False
         self.x_initial = x
         self.y_initial = y
-        
+        self.width = width
+        self.height = height
 
     
     def update(self):
@@ -41,6 +42,8 @@ class plateforme():
         else:
             img = pygame.image.load("sprites/plateforme/p1.png")  #plateformes jour
             if self.type == "porte":
+                self.img = pygame.transform.scale(img, (self.width, self.height))
+                self.rect.x = self.x_initial
+                self.rect.y = self.y_initial
                 self.rect = self.img.get_rect()
-        self.img = pygame.transform.scale(img, (self.rect.width, self.rect.height))
         self.update()
