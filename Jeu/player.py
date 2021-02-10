@@ -12,6 +12,9 @@ marche1_reverse = pygame.transform.flip(marche1, True, False)
 marche2_reverse = pygame.transform.flip(marche2, True, False)
 jump = pygame.image.load("sprites/jump.png")
 jump_reverse = pygame.transform.flip(jump, True, False)
+
+lit_dodo = [pygame.image.load("sprites/items/anim_dodo1.png"), pygame.image.load("sprites/items/anim_dodo2.png"), pygame.image.load("sprites/items/anim_dodo3.png"), pygame.image.load("sprites/items/anim_dodo4.png"), pygame.image.load("sprites/items/anim_dodo5.png"), pygame.image.load("sprites/items/anim_dodo6.png"), ]
+
 class player():
     def __init__(self, x ,y, screen, world):
         self.screen = screen
@@ -126,7 +129,7 @@ class player():
 
         if self.world.lit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if key[pygame.K_f]:
-                pygame.time.wait(1500)
+                self.endort()
                 self.world.sleep()
 
         if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
@@ -190,3 +193,11 @@ class player():
             if self.fps > 30:
                 self.fps = 0
         self.screen.blit(self.image, self.rect)
+
+    def endort(self):
+        for i in range (0,6):
+            self.world.update()
+            self.image = lit_dodo[i]
+            self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - self.image.get_height() - 18))
+            pygame.display.update()
+            pygame.time.wait(500)
