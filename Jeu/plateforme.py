@@ -33,6 +33,9 @@ class plateforme():
         self.update()
         
     def sleep(self):
+        if self.type =="porte" and self.nuit == False:
+            self.x_initial = self.rect.x
+            self.y_initial = self.rect.y
         self.nuit = not self.nuit
         if self.nuit == True:
             img = pygame.image.load("sprites/plateforme/p1.png")  #plateformes nuit
@@ -45,5 +48,12 @@ class plateforme():
                 self.img = pygame.transform.scale(img, (self.width, self.height))
                 self.rect.x = self.x_initial
                 self.rect.y = self.y_initial
-                self.rect = self.img.get_rect()
+                self.rect.width = self.width
+                self.rect.height = self.height
+        self.update()
+
+    def removePorte(self):
+        if self.type == "porte":
+            self.img = pygame.transform.scale(self.img, (0, 0))
+            self.rect = self.img.get_rect()
         self.update()

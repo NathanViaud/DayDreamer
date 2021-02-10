@@ -52,6 +52,8 @@ class player():
 
         self.last_direction = ""
 
+        self.cle = False
+
     def sleep(self):
         self.dort = not self.dort
 
@@ -88,6 +90,10 @@ class player():
         for plateforme in self.world.plateformes:
             if plateforme.rect.colliderect(self.rect.x+vx, self.rect.y, self.width, self.height):
                 vx =0
+                if plateforme.type == "porte":
+                    if self.cle == True:
+                        print("ouvrir porte")
+                        plateforme.removePorte()
             if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
                 self.last_plateform = plateforme
                 if self.vel_y < 0:
@@ -116,6 +122,8 @@ class player():
         if self.world.cle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == True:
                 self.world.cle.prendreCle()
+                self.cle = True
+                print(self.cle)
 
         if self.world.lit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if key[pygame.K_f]:
@@ -125,6 +133,7 @@ class player():
         if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == False:
                 print("gagné")
+            
           
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:

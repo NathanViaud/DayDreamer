@@ -1,9 +1,11 @@
 import pygame
+import random
 
 class fruit():
     #x,y : position
     def __init__(self, x, y, screen):
-        img = pygame.image.load("sprites/items/fruit.png")
+        num = random.randint(0,6)
+        img = pygame.image.load(f"sprites/items/fruit{num}.png")
         self.img = img
         self.rect = self.img.get_rect()
         self.rect.x = x

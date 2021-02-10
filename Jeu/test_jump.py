@@ -113,7 +113,7 @@ tutorial = True
 black = (0,0,0)
 #texte a afficher
 font = pygame.font.Font(None, 40)
-bienvenu = font.render("Bievnue a DayDreaming !", True, black)
+bienvenu = font.render("Bienvenue a DayDreaming !", True, black)
 mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, black)
 saut = font.render("Pour sauter utilisez la barre espace", True, black)
 font = pygame.font.Font(None, 30)
