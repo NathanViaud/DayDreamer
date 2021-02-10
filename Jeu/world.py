@@ -7,6 +7,7 @@ from cle import *
 
 class world():
     def __init__(self, fond, plateformes, fruits, ennemis, obstacles, cle, lit):
+        self.fond = fond
         self.plateformes = plateformes
         self.fond = fond
         self.fruits = fruits
@@ -14,6 +15,7 @@ class world():
         self.obstacles = obstacles
         self.cle = cle
         self.lit = lit
+        self.nuit = False
 
     def deplacement(self, vitesse):
         vitesse = -vitesse
@@ -48,5 +50,10 @@ class world():
                 self.fruits.remove(fruit)
         self.update()
 
-    def removeCle(self):
-        self.cle = 0
+    def sleep(self):
+        self.nuit = not self.nuit
+        self.fond.sleep()
+        for fruit in self.fruits:
+           fruit.sleep()
+        for plateforme in self.plateformes:
+            plateforme.sleep()

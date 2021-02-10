@@ -8,6 +8,7 @@ class fruit():
         self.rect.x = x
         self.rect.y = y
         self.screen = screen
+        self.nuit = False
 
     def deplacement(self, vitesse):
         self.rect.x += vitesse
@@ -16,10 +17,11 @@ class fruit():
     def update(self):
         self.screen.blit(self.img, self.rect)
 
-    def droite(self, vitesse):
-        self.rect.x -= vitesse
-        self.update()
-
-    def gauche(self, vitesse):
-        self.rect.x += vitesse
+    def sleep(self):
+        self.nuit = not self.nuit
+        if self.nuit == True:
+            img = pygame.image.load("sprites/items/fruit.png")  #fruit nuit
+        else:
+            img = pygame.image.load("sprites/items/fruit.png")  #fruit jour
+        self.img = img
         self.update()

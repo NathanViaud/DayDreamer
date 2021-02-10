@@ -9,6 +9,7 @@ class cle():
         self.rect.y = y
         self.screen = screen
         self.prise = False
+        self.nuit = False
 
     def deplacement(self, vitesse):
         self.rect.x += vitesse
@@ -21,4 +22,10 @@ class cle():
         self.prise= True
         transparent = (0, 0, 0, 0)
         self.img.fill(transparent)
+
+    def sleep(self):
+        self.nuit = not self.nuit
+        if self.nuit == False:
+            transparent = (0, 0, 0, 0)
+            self.img.fill(transparent)
 

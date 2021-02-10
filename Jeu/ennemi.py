@@ -25,19 +25,7 @@ class ennemi():
         self.xd += vitesse
         self.xf += vitesse
         self.update()
-
-    def droite(self, vitesse):
-        self.rect.x -= vitesse
-        self.deb -= vitesse
-        self.fin -= vitesse
-        self.update()
-    
-    def gauche(self, vitesse):
-        self.rect.x += vitesse
-        self.deb += vitesse
-        self.fin += vitesse
-        self.update()
-
+        
     def moveE(self):
         if self.xd != self.xf:
             if self.rect.x >= self.xf or self.rect.x <= self.xd:

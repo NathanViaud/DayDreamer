@@ -64,7 +64,6 @@ def genTuto():
 
         #clé
         cle1 = cle(1400, 400, screen)
-        fond.pos_x = 0
 
         #lit
         l1 = lit(3800, 700, screen)
@@ -88,7 +87,7 @@ enSaut = False
 mort = pygame.image.load("images/mort.png")
 course = pygame.mixer.Sound("./son/course.wav")
 saut = pygame.mixer.Sound("./son/saut.wav")
-fond = fond(pygame.image.load("images/fond.png"), screen, 8196)
+fond = fond(screen, 8196)
 
 #p_saut1 = plateforme(450, 450, screen)
 #p_saut2 = plateforme(750, 550, screen)
@@ -121,40 +120,54 @@ mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger",
 saut = font.render("Pour sauter utilisez la barre espace", True, white)
 fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, white)
 
+
 tuto = genTuto()
 # Joueur:
 joueur = player(3, 600, screen, tuto)
 
-while joue:
-    pygame.time.wait(1)
-    screen.blit(fond.img, (fond.pos_x, 0))
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            joue = False
-    tuto.update()
-    for ennemi in tuto.ennemis:
-        ennemi.moveE()
+monde = True
 
-    
-    joueur.deplaceAnimation()
-    joueur.update()
-    if tutorial == True:
-        screen.blit(mouvement_tuto, (fond.pos_x+50, 200))
-        screen.blit(saut, (fond.pos_x +1200,200))
-        screen.blit(fruits_message, (fond.pos_x+2500, 200))
-    pygame.display.update()
+while monde:
 
-    while joueur.mort and joue:
-        screen.blit(mort, (0,0,1024,768))
-        pygame.display.update()
+    while joue:
+        pygame.time.wait(1)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 joue = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                monde = False
+        tuto.update()
+        for ennemi in tuto.ennemis:
+            ennemi.moveE()
+
+        
+        joueur.deplaceAnimation()
+        joueur.update()
+        if tutorial == True:
+            screen.blit(mouvement_tuto, (fond.pos_x+50, 200))
+            screen.blit(saut, (fond.pos_x +1200,200))
+            screen.blit(fruits_message, (fond.pos_x+2500, 200))
+        pygame.display.update()
+
+        if joueur.dort == True:
+            joueur.sleep()
+            tuto.sleep()
+            tuto.update()
+            joueur.update()
+            
+
+        while joueur.mort and joue:
+            screen.blit(mort, (0,0,1024,768))
+            pygame.display.update()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
                     joue = False
-                else:
-                    joueur.mort = False
-                    tuto = genTuto()
-                    joueur = player(3, 600, screen, tuto)
+                    monde = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        joue = False
+                        monde = False
+                    else:
+                        joueur.mort = False
+                        tuto = genTuto()
+                        joueur = player(3, 600, screen, tuto)
 pygame.quit()

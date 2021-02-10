@@ -39,6 +39,11 @@ class player():
 
         self.mort = False
 
+        self.dort = True
+
+    def sleep(self):
+        self.dort = not self.dort
+
     def update(self):
         
         w, h = pygame.display.get_surface().get_size()
@@ -93,10 +98,14 @@ class player():
                 self.mort = True
 
         if self.world.cle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
-            self.world.cle.prendreCle()
+            if self.world.nuit == True:
+                self.world.cle.prendreCle()
 
         if self.world.lit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
-            print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+            for event in pygame.event.get():
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_f:
+                        self.sleep()
           
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:
@@ -122,6 +131,7 @@ class player():
         self.screen.blit(self.image, self.rect)
         pygame.draw.rect(self.screen, (0, 0, 0), self.rect, 2)
 
+  
 
     def deplaceAnimation(self):
         if self.index > 3:

@@ -8,6 +8,7 @@ class plateforme():
         self.rect.x = x
         self.rect.y = y
         self.screen = screen
+        self.nuit = False
 
     
     def update(self):
@@ -18,10 +19,11 @@ class plateforme():
         self.rect.x += vitesse
         self.update()
         
-    def droite(self, vitesse):
-        self.rect.x -= vitesse
-        self.update()
-
-    def gauche(self, vitesse):
-        self.rect.x += vitesse
+    def sleep(self):
+        self.nuit = not self.nuit
+        if self.nuit == True:
+            img = pygame.image.load("sprites/plateforme/p1.png")  #plateformes nuit
+        else:
+            img = pygame.image.load("sprites/plateforme/p1.png")  #plateformes jour
+        self.img = pygame.transform.scale(img, (self.rect.width, self.rect.height))
         self.update()
