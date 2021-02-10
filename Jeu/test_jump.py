@@ -140,7 +140,6 @@ while monde:
         tuto.update()
         for ennemi in tuto.ennemis:
             ennemi.moveE()
-
         
         joueur.deplaceAnimation()
         joueur.update()

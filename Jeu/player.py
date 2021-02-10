@@ -52,7 +52,7 @@ class player():
 
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and self.jumped == False:
-            self.vel_y = -7.5
+            self.vel_y = -6.75
             self.jumped = True
         if key[pygame.K_LEFT]:
             self.direction = "gauche"
@@ -104,6 +104,10 @@ class player():
             if commandes[pygame.K_f]:
                 pygame.time.wait(1500)
                 self.world.sleep()
+
+        if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
+            if self.world.nuit == False:
+                print("gagné")
           
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:
