@@ -11,6 +11,7 @@ from fruit import *
 from ennemi import *
 from obstacles import *
 from lit import *
+from sortie import *
 
 pygame.init()
 
@@ -27,6 +28,10 @@ def genTuto():
         p_sautfruit2 = plateforme(3200, 450, screen, 100, 10, "plat")
         p_sautfruit3 = plateforme(3400, 250, screen, 100, 10, "plat")
         p_porte = plateforme(4000, 0, screen, 100,768, "porte")
+        p_cle1 = plateforme(4250, 600, screen, 100, 10, "plat")
+        p_cle2 = plateforme(4600, 450, screen, 100, 10, "plat")
+        p_cle3 = plateforme(4800, 450, screen, 300, 10, "plat")
+        p_cle4 = plateforme(5250,450, screen, 100, 10, "plat")
         plateformes = []
         plateformes.append(sol)
         plateformes.append(p_saut1)
@@ -38,6 +43,10 @@ def genTuto():
         plateformes.append(p_sautfruit2)
         plateformes.append(p_sautfruit3)
         plateformes.append(p_porte)
+        plateformes.append(p_cle1)
+        plateformes.append(p_cle2)
+        plateformes.append(p_cle3)
+        plateformes.append(p_cle4)
 
         # Fruits du niveau:
         fruits = []
@@ -50,8 +59,10 @@ def genTuto():
 
         # Enemis:
         ennemis = []
-       # e1 = ennemi(2, 900, 350, screen, 900, 900, 1, 250, 500, 1)
-       # ennemis.append(e1)
+        e1 = ennemi(2, 4470, 500, screen, 4470, 4470, 1, 300, 650, 2)
+        e2 = ennemi(1, 4800, 350, screen, 4799, 5050, 2, 350, 350, 1)
+        ennemis.append(e1)
+        ennemis.append(e2)
 
         # Piques ( A changer)
         obs = []
@@ -63,14 +74,17 @@ def genTuto():
         obs.append(obstacle3)
 
         #clé
-        cle1 = cle(1400, 400, screen)
+        cle1 = cle(5280, 400, screen)
 
         #lit
         l1 = lit(3800, 700, screen)
 
+        # Sortie
+        sort = sortie(5750, 622, screen)
+
         fond.reset()
 
-        return world(fond, plateformes, fruits, ennemis, obs, cle1, l1)
+        return world(fond, plateformes, fruits, ennemis, obs, cle1, l1, sort)
 
 VITESSE_SAUT = 40
 HAUTEUR_SAUT = 100
