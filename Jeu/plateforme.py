@@ -50,5 +50,4 @@ class plateforme():
                 self.rect.y = self.y_initial
                 self.rect.width = self.width
                 self.rect.height = self.height
-                print(self.rect)
         self.update()

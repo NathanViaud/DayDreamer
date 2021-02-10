@@ -62,3 +62,9 @@ class world():
         for plateforme in self.plateformes:
             plateforme.sleep()
         self.cle.sleep()
+
+    def removePorte(self):
+        for plateforme in self.plateformes:
+            if plateforme.type == "Porte":
+                self.plateformes.remove(plateforme)
+        self.update()
