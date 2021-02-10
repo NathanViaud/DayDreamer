@@ -132,7 +132,8 @@ class player():
         if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == False:
                 self.victoire = True
-            
+        else:
+            self.victoire = False    
           
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:

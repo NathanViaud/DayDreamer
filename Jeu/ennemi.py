@@ -1,5 +1,7 @@
 import pygame
 
+burger = [pygame.image.load("sprites/ennemis/burger_bas.png"), pygame.image.load("sprites/ennemis/burger_mid.png"), pygame.image.load("sprites/ennemis/burger_haut.png"), pygame.image.load("sprites/ennemis/burger_mid.png")]
+
 class ennemi():
     #type : 1 = au sol 2 = volant
     #x,y : position de base du perso
@@ -10,8 +12,7 @@ class ennemi():
     #vitesse_y : vitesse en y
     def __init__(self, type, x, y, screen , xd, xf, vitesse, yd, yf, vitesse_y):
         self.type = type
-        img = pygame.image.load("sprites/ennemis/e" + str(type) + ".png")
-        self.img = img
+        self.img = burger[0]
         self.rect = self.img.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -22,9 +23,12 @@ class ennemi():
         self.yd = yd
         self.yf = yf
         self.vitesse_y = vitesse_y
+        self.frame = 0
+        self.fps = 30
 
 
     def update(self):
+        self.animation()
         self.screen.blit(self.img, self.rect)
 
     def deplacement(self, vitesse):
@@ -43,3 +47,14 @@ class ennemi():
                 self.vitesse_y = -self.vitesse_y
             self.rect.y += self.vitesse_y
         self.update()
+        print(self.frame)
+
+    def animation(self):
+        if self.frame > 3:
+            self.frame = 0
+        if self.fps % 30 == 0:
+            self.img = burger[self.frame]
+            self.frame += 1
+        if self.fps > 30:
+            self.fps = 0
+        self.fps += 1
