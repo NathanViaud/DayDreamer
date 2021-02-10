@@ -10,6 +10,8 @@ marche2 = pygame.image.load("sprites/marche2.png")
 img_reverse = pygame.transform.flip(img, True, False)
 marche1_reverse = pygame.transform.flip(marche1, True, False)
 marche2_reverse = pygame.transform.flip(marche2, True, False)
+jump = pygame.image.load("sprites/jump.png")
+jump_reverse = pygame.transform.flip(jump, True, False)
 class player():
     def __init__(self, x ,y, screen, world):
         self.screen = screen
@@ -31,10 +33,12 @@ class player():
         self.images_r.append(marche1)
         self.images_r.append(img)
         self.images_r.append(marche2)
+        self.images_r.append(img)
 
         self.images_l.append(marche1_reverse)
         self.images_l.append(img_reverse)
         self.images_l.append(marche2_reverse)
+        self.images_l.append(img_reverse)
 
         self.direction = ""
 
@@ -74,7 +78,6 @@ class player():
             self.fps = 0
             if self.direction != "":
                 self.last_direction = self.direction
-                print(self.last_direction)
             self.direction = ""
 
         self.vel_y += 0.1
@@ -150,18 +153,24 @@ class player():
   
 
     def deplaceAnimation(self):
-        if self.index > 2:
-            self.index = 0
-        if self.fps % 30 == 0:
-            if self.direction == "gauche":
-                self.image = self.images_l[self.index]
-            elif self.direction == "droite":
-                self.image = self.images_r[self.index]
+        if self.jumped:
+            if self.direction == "droite":
+                self.image = jump
             else:
-                if self.last_direction == "gauche":
-                    self.image = img_reverse
+                self.image = jump_reverse
+        else:
+            if self.index > 3:
+                self.index = 0
+            if self.fps % 30 == 0:
+                if self.direction == "gauche":
+                    self.image = self.images_l[self.index]
+                elif self.direction == "droite":
+                    self.image = self.images_r[self.index]
                 else:
-                    self.image = img
-        if self.fps > 30:
-            self.fps = 0
+                    if self.last_direction == "gauche":
+                        self.image = img_reverse
+                    else:
+                        self.image = img
+            if self.fps > 30:
+                self.fps = 0
         self.screen.blit(self.image, self.rect)
