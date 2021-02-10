@@ -174,7 +174,7 @@ while monde:
                     if event.key == pygame.K_ESCAPE:
                         joue = False
                         monde = False
-                    else:
+                    elif event.key == pygame.K_SPACE:
                         joueur.mort = False
                         tuto = genTuto()
                         joueur = player(3, 600, screen, tuto)
