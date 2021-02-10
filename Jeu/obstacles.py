@@ -1,6 +1,7 @@
 import pygame
 
 class obstacles:
+    #x,y : position
     def __init__(self, x, y, screen):
         img = pygame.image.load('sprites/obstacles/obstacle1.png')
         self.img = img

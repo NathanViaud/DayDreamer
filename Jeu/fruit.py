@@ -1,6 +1,7 @@
 import pygame
 
 class fruit():
+    #x,y : position
     def __init__(self, x, y, screen):
         img = pygame.image.load("sprites/items/fruit.png")
         self.img = img

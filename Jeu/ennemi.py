@@ -1,6 +1,13 @@
 import pygame
 
 class ennemi():
+    #type : 1 = au sol 2 = volant
+    #x,y : position de base du perso
+    #screen : ecran actuel
+    #xd,xf : position x de debut, position x de fin (egale si pas de deplacement en x) | xd < xf
+    #vitesse : vitesse en x
+    #yd, yf : position en y de debut, position en y de fin (egale si pas de deplacement en y)  | yd < yf
+    #vitesse_y : vitesse en y
     def __init__(self, type, x, y, screen , xd, xf, vitesse, yd, yf, vitesse_y):
         self.type = type
         img = pygame.image.load("sprites/ennemis/e" + str(type) + ".png")
@@ -25,7 +32,7 @@ class ennemi():
         self.xd += vitesse
         self.xf += vitesse
         self.update()
-        
+
     def moveE(self):
         if self.xd != self.xf:
             if self.rect.x >= self.xf or self.rect.x <= self.xd:

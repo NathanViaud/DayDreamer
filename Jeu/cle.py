@@ -1,6 +1,7 @@
 import pygame
 
 class cle():
+    #x,y : position
     def __init__(self, x , y, screen) :
         img = pygame.image.load("sprites/items/cle.png")
         self.img = img

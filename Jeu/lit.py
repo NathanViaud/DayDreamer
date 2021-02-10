@@ -1,6 +1,7 @@
 import pygame
 
 class lit():
+    #x,y : position
     def __init__(self, x, y, screen) :
         img = pygame.image.load("sprites/items/lit.png")
         self.img = img

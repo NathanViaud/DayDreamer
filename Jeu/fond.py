@@ -1,6 +1,7 @@
 import pygame
 
 class fond:
+    # taille : taille en x du niveau
     def __init__(self, screen, taille):
         img = pygame.image.load("images/fond_j.png")
         self.img = img

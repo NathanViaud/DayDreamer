@@ -1,6 +1,9 @@
 import pygame
 
 class plateforme():
+    #x,y : position
+    #width, height : dimensions
+    #type : plat = plateforme classique | porte = porte qui bloque le jour | sol : le sol du niveau
     def __init__(self, x, y, screen, width, height, type):
         self.type = type
         if self.type == "porte":
