@@ -17,16 +17,16 @@ pygame.init()
 def genTuto():
 
         # Sol du terrain
-        sol = plateforme(0, 750, screen, 8196, 18)
-        p_saut1 = plateforme(1300, 600, screen, 100, 10)
-        p_saut2 = plateforme(1600, 450, screen, 100, 10)
-        p_saut3 = plateforme(1900, 600, screen, 100, 10)
-        p_saut4 = plateforme(2400,700, screen, 50, 50)
-        p_saut5 = plateforme(2662,700, screen, 50, 50)
-        p_sautfruit1 = plateforme(3000, 600, screen, 100, 10)
-        p_sautfruit2 = plateforme(3200, 450, screen, 100, 10)
-        p_sautfruit3 = plateforme(3400, 250, screen, 100, 10)
-        p_porte = plateforme(4000, 0, screen, 100,768)
+        sol = plateforme(0, 750, screen, 8196, 18, "sol")
+        p_saut1 = plateforme(1300, 600, screen, 100, 10, "plat")
+        p_saut2 = plateforme(1600, 450, screen, 100, 10, "plat")
+        p_saut3 = plateforme(1900, 600, screen, 100, 10, "plat")
+        p_saut4 = plateforme(2400,700, screen, 50, 50, "plat")
+        p_saut5 = plateforme(2662,700, screen, 50, 50, "plat")
+        p_sautfruit1 = plateforme(3000, 600, screen, 100, 10, "plat")
+        p_sautfruit2 = plateforme(3200, 450, screen, 100, 10, "plat")
+        p_sautfruit3 = plateforme(3400, 250, screen, 100, 10, "plat")
+        p_porte = plateforme(4000, 0, screen, 100,768, "porte")
         plateformes = []
         plateformes.append(sol)
         plateformes.append(p_saut1)
@@ -69,7 +69,7 @@ def genTuto():
         l1 = lit(3800, 700, screen)
 
         fond.reset()
-        
+
         return world(fond, plateformes, fruits, ennemis, obs, cle1, l1)
 
 VITESSE_SAUT = 40
@@ -147,13 +147,6 @@ while monde:
             screen.blit(saut, (fond.pos_x +1200,200))
             screen.blit(fruits_message, (fond.pos_x+2500, 200))
         pygame.display.update()
-
-        if joueur.dort == True:
-            joueur.sleep()
-            tuto.sleep()
-            tuto.update()
-            joueur.update()
-            
 
         while joueur.mort and joue:
             screen.blit(mort, (0,0,1024,768))

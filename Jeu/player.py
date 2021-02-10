@@ -49,7 +49,6 @@ class player():
         w, h = pygame.display.get_surface().get_size()
         vx = 0
         dy = 0
-        d1x = 0
 
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and self.jumped == False:
@@ -105,7 +104,7 @@ class player():
             for event in pygame.event.get():
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_f:
-                        self.sleep()
+                        self.world.sleep()
           
         if self.direction == "droite":
             if self.world.fond.pos_x <= -self.world.fond.taille + w:
