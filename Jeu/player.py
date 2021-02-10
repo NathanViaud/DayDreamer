@@ -1,8 +1,8 @@
 import pygame
 
-from plateforme import *
-from fond import *
-from world import *
+from Jeu.plateforme import *
+from Jeu.fond import *
+from Jeu.world import *
 
 img = pygame.image.load("sprites/idle.png")
 marche1 = pygame.image.load("sprites/marche1.png")

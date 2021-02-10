@@ -1,6 +1,12 @@
 import pygame
 import os
 from button import *
+import sys
+sys.path.append(os.path.abspath(".."))
+from Jeu import test_jump
+from Jeu import *
+from Jeu.test_jump import runGame
+from Jeu.test_jump import *
 
 size = (1024,768)
 screen = pygame.display.set_mode(size)
@@ -45,8 +51,7 @@ while loop:
                     button2.update()
                     pygame.display.update()
                     pygame.time.wait(1000)
-                    pygame.quit()
-                    os.system('python test_jump.py &')
+                    test_jump.runGame(screen)
                     loop = False
     for b in buttons:
         b.update()

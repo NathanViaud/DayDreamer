@@ -1,9 +1,9 @@
 import pygame
 
-from player import *
-from fond import *
-from plateforme import *
-from cle import *
+from Jeu.player import *
+from Jeu.fond import *
+from Jeu.plateforme import *
+from Jeu.cle import *
 
 class world():
     def __init__(self, fond, plateformes, fruits, ennemis, obstacles, cle, lit, sortie):

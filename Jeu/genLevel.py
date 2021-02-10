@@ -1,14 +1,14 @@
 import pygame
-from world import *
-from fond import *
-from plateforme import *
-from player import *
-from world import *
-from fruit import *
-from ennemi import *
-from obstacles import *
-from lit import *
-from sortie import *
+from Jeu.world import *
+from Jeu.fond import *
+from Jeu.plateforme import *
+from Jeu.player import *
+from Jeu.world import *
+from Jeu.fruit import *
+from Jeu.ennemi import *
+from Jeu.obstacles import *
+from Jeu.lit import *
+from Jeu.sortie import *
 
 class genLevel():
     def __init__(self, screen, niveau):
@@ -25,8 +25,8 @@ class genLevel():
 
     
     def genTuto(self):
-        from fond import fond
-        from ennemi import ennemi
+        from Jeu.fond import fond
+        from Jeu.ennemi import ennemi
         fond = fond(self.screen, 6250)
         # Sol du terrain
         plateformes = []
@@ -98,9 +98,9 @@ class genLevel():
         return world(fond, plateformes, fruits, ennemis, obs, cle1, l1, sort)
 
     def genNiveau1(self):
-        from ennemi import ennemi
-        from fond import fond
-        from ennemi import ennemi
+        from Jeu.ennemi import ennemi
+        from Jeu.fond import fond
+        from Jeu.ennemi import ennemi
         plateformes = []
         fruits = []
         ennemis = []
