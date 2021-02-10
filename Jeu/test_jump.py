@@ -15,8 +15,17 @@ from sortie import *
 
 pygame.init()
 
-def genTuto():
+plateformes = []
+fruits = []
+ennemis = []
+obs = []
 
+def genTuto():
+        from ennemi import ennemi
+        plateformes.clear()
+        fruits.clear()
+        ennemis.clear()
+        obs.clear()
         # Sol du terrain
         sol = plateforme(0, 750, screen, 8196, 18, "sol")
         p_saut1 = plateforme(1300, 600, screen, 100, 10, "plat")
@@ -32,7 +41,6 @@ def genTuto():
         p_cle2 = plateforme(4600, 450, screen, 100, 10, "plat")
         p_cle3 = plateforme(4800, 450, screen, 300, 10, "plat")
         p_cle4 = plateforme(5250,450, screen, 100, 10, "plat")
-        plateformes = []
         plateformes.append(sol)
         plateformes.append(p_saut1)
         plateformes.append(p_saut2)
@@ -49,7 +57,6 @@ def genTuto():
         plateformes.append(p_cle4)
 
         # Fruits du niveau:
-        fruits = []
         f1 = fruit(3035, 555, screen)
         f2 = fruit(3235, 400, screen)
         f3 = fruit(3435, 200, screen)
@@ -58,14 +65,12 @@ def genTuto():
         fruits.append(f3)
 
         # Enemis:
-        ennemis = []
         e1 = ennemi(2, 4470, 500, screen, 4470, 4470, 1, 300, 650, 2)
         e2 = ennemi(1, 4800, 350, screen, 4799, 5050, 2, 350, 350, 1)
         ennemis.append(e1)
         ennemis.append(e2)
 
         # Piques ( A changer)
-        obs = []
         obstacle1 = obstacles(2460, 690, screen)
         obstacle2 = obstacles(2524, 690, screen)
         obstacle3 = obstacles(2588, 690, screen)
