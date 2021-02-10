@@ -148,7 +148,7 @@ while monde:
             screen.blit(mouvement_tuto, (tuto.fond.pos_x+50, 300))
             screen.blit(saut, (tuto.fond.pos_x +1200,200))
             screen.blit(fruits_message, (tuto.fond.pos_x+2900, 500))
-            screen.blit(lit_message, (tuto.fond.pos_x+3595,650))
+            screen.blit(lit_message, (tuto.fond.pos_x+3590,650))
             screen.blit(enemies_messsage, (tuto.fond.pos_x+4250, 200))
             screen.blit(cle_message, (tuto.fond.pos_x+5200,350))
             screen.blit(porte_message, (tuto.fond.pos_x+5700, 500))
