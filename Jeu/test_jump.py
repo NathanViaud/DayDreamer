@@ -169,4 +169,5 @@ while monde:
                         joueur.mort = False
                         tuto = genTuto()
                         joueur = player(3, 600, screen, tuto)
+        pygame.time.wait(1)
 pygame.quit()
