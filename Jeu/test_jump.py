@@ -19,7 +19,7 @@ pygame.init()
 def genTuto():
     from fond import fond
     from ennemi import ennemi
-    fond = fond(screen, 8196)
+    fond = fond(screen, 6250)
     # Sol du terrain
     plateformes = []
     sol = plateforme(0, 750, screen, 8196, 18, "sol")
@@ -140,7 +140,7 @@ while monde:
         tuto.update()
         for ennemi in tuto.ennemis:
             ennemi.moveE()
-        
+
         joueur.deplaceAnimation()
         joueur.update()
         if tutorial == True:
