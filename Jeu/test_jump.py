@@ -79,6 +79,7 @@ def runGame(screen):
             joueur.deplaceAnimation()
             joueur.update()
             if tutorial == True:
+                joueur.estTutoriel = True
                 screen.blit(bienvenu, (niveaux[level].fond.pos_x+50,200))
                 screen.blit(mouvement_tuto, (niveaux[level].fond.pos_x+50, 300))
                 screen.blit(saut, (niveaux[level].fond.pos_x +1200,200))
@@ -87,6 +88,8 @@ def runGame(screen):
                 screen.blit(enemies_messsage, (niveaux[level].fond.pos_x+4250, 200))
                 screen.blit(cle_message, (niveaux[level].fond.pos_x+5200,350))
                 screen.blit(porte_message, (niveaux[level].fond.pos_x+5700, 500))
+            else:
+                joueur.estTutoriel = False
             pygame.display.update()
 
             while joueur.mort and joue:

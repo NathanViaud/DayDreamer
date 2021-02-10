@@ -12,8 +12,22 @@ marche1_reverse = pygame.transform.flip(marche1, True, False)
 marche2_reverse = pygame.transform.flip(marche2, True, False)
 jump = pygame.image.load("sprites/jump.png")
 jump_reverse = pygame.transform.flip(jump, True, False)
+black = (0,0,0)
 
-lit_dodo = [pygame.image.load("sprites/items/anim_dodo1.png"), pygame.image.load("sprites/items/anim_dodo2.png"), pygame.image.load("sprites/items/anim_dodo3.png"), pygame.image.load("sprites/items/anim_dodo4.png"), pygame.image.load("sprites/items/anim_dodo5.png"), pygame.image.load("sprites/items/anim_dodo6.png"), ]
+
+lit_dodo = [pygame.image.load("sprites/items/anim_dodo1.png"), pygame.image.load("sprites/items/anim_dodo2.png"), pygame.image.load("sprites/items/anim_dodo3.png"), pygame.image.load("sprites/items/anim_dodo4.png"), pygame.image.load("sprites/items/anim_dodo5.png"), pygame.image.load("sprites/items/anim_dodo6.png")]
+
+font = pygame.font.Font(None, 40)
+bienvenu = font.render("Bienvenue dans DayDreaming !", True, black)
+mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, black)
+saut = font.render("Pour sauter utilisez la barre espace", True, black)
+font = pygame.font.Font(None, 30)
+fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, black)
+lit_message = font.render("Utilisez la touche F pour dormir dans le lit", True, black)
+cle_message = font.render("Prenez la clé pour ouvrir la porte", True, black)
+porte_message = font.render("Utilisez la porte pour finir le Tutoriel", True, black)
+font = pygame.font.Font(None, 40)
+enemies_messsage = font.render("Attention aux ennemis ! ", True, black)
 
 class player():
     def __init__(self, x ,y, screen, world):
@@ -57,6 +71,8 @@ class player():
 
         self.cle = False
         self.victoire = False
+
+        self.estTutoriel = False
 
     def sleep(self):
         self.dort = not self.dort
@@ -131,6 +147,7 @@ class player():
             if key[pygame.K_f]:
                 self.endort()
                 self.world.sleep()
+                self.reveille()
 
         if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == False:
@@ -198,6 +215,64 @@ class player():
         for i in range (0,6):
             self.world.update()
             self.image = lit_dodo[i]
+            if self.estTutoriel:
+                self.screen.blit(bienvenu, (self.world.fond.pos_x+50,200))
+                self.screen.blit(mouvement_tuto, (self.world.fond.pos_x+50, 300))
+                self.screen.blit(saut, (self.world.fond.pos_x +1200,200))
+                self.screen.blit(fruits_message, (self.world.fond.pos_x+2900, 500))
+                self.screen.blit(lit_message, (self.world.fond.pos_x+3595,650))
+                self.screen.blit(enemies_messsage, (self.world.fond.pos_x+4250, 200))
+                self.screen.blit(cle_message, (self.world.fond.pos_x+5200,350))
+                self.screen.blit(porte_message, (self.world.fond.pos_x+5700, 500))
             self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - self.image.get_height() - 18))
             pygame.display.update()
             pygame.time.wait(500)
+        fondu_noir = False
+        fonduSurface = pygame.Surface(pygame.display.get_window_size())
+        alph = 0
+
+        fonduSurface.fill((0,0,0))
+        fonduSurface.set_alpha(alph)
+        while not fondu_noir:
+            alph += 0.5
+            fonduSurface.set_alpha(alph)
+            self.world.update()
+            if self.estTutoriel:
+                self.screen.blit(bienvenu, (self.world.fond.pos_x+50,200))
+                self.screen.blit(mouvement_tuto, (self.world.fond.pos_x+50, 300))
+                self.screen.blit(saut, (self.world.fond.pos_x +1200,200))
+                self.screen.blit(fruits_message, (self.world.fond.pos_x+2900, 500))
+                self.screen.blit(lit_message, (self.world.fond.pos_x+3595,650))
+                self.screen.blit(enemies_messsage, (self.world.fond.pos_x+4250, 200))
+                self.screen.blit(cle_message, (self.world.fond.pos_x+5200,350))
+                self.screen.blit(porte_message, (self.world.fond.pos_x+5700, 500))
+            self.image = lit_dodo[5]
+            self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - self.image.get_height() - 18))
+            self.screen.blit(fonduSurface, (0,0))
+            pygame.display.update()
+            if alph >= 255:
+                fondu_noir = True
+
+
+    def reveille(self):
+        fonduSurface = pygame.Surface(pygame.display.get_window_size())
+        fonduSurface.fill((0,0,0))
+        self.world.update()
+        pygame.display.update()
+        for alpha in range(0, 255):
+            fonduSurface.set_alpha(255 - alpha/2)
+            self.world.update()
+            self.screen.blit(self.screen, (0,0))
+            self.image = img
+            self.screen.blit(self.image, self.rect)
+            if self.estTutoriel:
+                self.screen.blit(bienvenu, (self.world.fond.pos_x+50,200))
+                self.screen.blit(mouvement_tuto, (self.world.fond.pos_x+50, 300))
+                self.screen.blit(saut, (self.world.fond.pos_x +1200,200))
+                self.screen.blit(fruits_message, (self.world.fond.pos_x+2900, 500))
+                self.screen.blit(lit_message, (self.world.fond.pos_x+3595,650))
+                self.screen.blit(enemies_messsage, (self.world.fond.pos_x+4250, 200))
+                self.screen.blit(cle_message, (self.world.fond.pos_x+5200,350))
+                self.screen.blit(porte_message, (self.world.fond.pos_x+5700, 500))
+            self.screen.blit(fonduSurface, (0,0))
+            pygame.display.update()
