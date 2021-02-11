@@ -5,9 +5,10 @@ def runScore(screen):
     screen.fill((0,0,0))
 
     bg = pygame.image.load("images/congratulations.png")
+    w, h = pygame.display.get_surface().get_size()
 
     input_text = ""
-    input_box = pygame.Rect(100, 100, 300, 50)
+    input_box = pygame.Rect(w/2-200, h/2-25, 400, 50)
     font = pygame.font.Font("font/font_menu.ttf", 40)
 
     loop = True

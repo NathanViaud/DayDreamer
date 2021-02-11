@@ -7,3 +7,5 @@ Abel|99
 Abel|99
 abelichon|730
 Carlos|-10
+nathan|-10
+menfou|-10
