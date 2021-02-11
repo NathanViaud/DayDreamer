@@ -147,8 +147,9 @@ def runGame(screen):
             pygame.display.update()
             
             if joueur.mort :
-                pts -= 10
-                cmpt_mort += 1
+                if level != 0:
+                    pts -= 10
+                    cmpt_mort += 1
 
             while joueur.mort and joue:
                 screen.blit(mort, (0,0,1024,768))
