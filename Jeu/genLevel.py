@@ -159,9 +159,9 @@ class genLevel():
         fruits.append(f6)
         fruits.append(f7)
         # Enemis:
-        e1 = ennemi(2, 4470, 500, self.screen, 4470, 4470, 1, 200, 650, 2)
-        e2 = ennemi(2, 4670, 500, self.screen, 4570, 4570, 1, 200, 600, 3)
-        e3 = ennemi(2, 4870, 500, self.screen, 4570, 4570, 1, 200, 600, 4)
+        e1 = ennemi(2, 4470, 500, self.screen, 4470, 4470, 1, 200, 660, 2)
+        e2 = ennemi(2, 4670, 500, self.screen, 4570, 4570, 1, 200, 670, 3)
+        e3 = ennemi(2, 4870, 500, self.screen, 4570, 4570, 1, 200, 650, 4)
 
         # e2 = ennemi(1, 4800, 350, screen, 4799, 5050, 2, 350, 350, 1)
         ennemis.append(e1)
@@ -186,7 +186,7 @@ class genLevel():
         cle1 = cle(5280, 700, self.screen)
 
         #lit
-        l1 = lit(3800, 700, self.screen)
+        l1 = lit(3800, 735, self.screen)
 
         # Sortie
         sort = sortie(5750, 622, self.screen)
@@ -265,7 +265,7 @@ class genLevel():
 
         # Enemis:
         e1 = ennemi(2, 2000, 500, self.screen, 2000, 2000, 1, 350, 680, 1.75)
-        e2 = ennemi(1, 4800, 650, self.screen, 4799, 5050, 1, 350, 350, 0.5)
+        e2 = ennemi(1, 4800, 700 , self.screen, 4799, 5050, 1, 350, 350, 0.5)
         e3 = ennemi(2, 7000, 300, self.screen, 7000, 7000, 4, 50, 680, 4)
 
 
@@ -349,7 +349,7 @@ class genLevel():
         cle1 = cle(6800, 700,self.screen)
 
         #lit
-        l1 = lit(3850, 240,self.screen)
+        l1 = lit(3850, 235,self.screen)
 
 
         # Sortie
