@@ -179,7 +179,7 @@ class genLevel():
         f10 = fruit(1100, 720, self.screen)
         f11 = fruit(4850, 720, self.screen)
         f12 = fruit(5050, 720, self.screen)
-        f13 = fruit(5300, 450, self.screen)
+        f13 = fruit(5300, 720, self.screen)
         f14 = fruit(5500, 720, self.screen)
         fruits.append(f2)
         fruits.append(f3)
@@ -219,7 +219,7 @@ class genLevel():
         obs.append(obstacle6)
 
         #clé
-        cle1 = cle(5280, 700, self.screen)
+        cle1 = cle(5280, 400, self.screen)
 
         #lit
         l1 = lit(3800, 735, self.screen)
