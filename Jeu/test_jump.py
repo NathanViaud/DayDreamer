@@ -70,6 +70,17 @@ def runGame(screen):
     level = 0
     pts = 0
 
+    f1 = open('test.txt', 'r')
+    lines = f1.readlines()
+    for line in lines:
+        l = line.split()
+        l2 = line.split('|')
+        nom = l2[0]
+        points = l2[1]
+        print("nom : " + str(nom))
+        print("score : " + str(points))
+    #f = open('test.txt', 'a')
+
     while monde:
         if level != 0:
             tutorial = False
@@ -141,7 +152,7 @@ def runGame(screen):
                 joueur.estTutoriel = False
             pygame.display.update()
             
-            if joueur.mort:
+            if joueur.mort :
                 pts -= 10
 
             while joueur.mort and joue:
@@ -173,3 +184,6 @@ def runGame(screen):
         if level > len(niveaux):
             monde = False
         print(joueur.victoire)
+        #f.write(str("Nathan"))
+        #f.write(str("|"))
+        #f.write(str(pts))
