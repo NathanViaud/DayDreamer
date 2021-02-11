@@ -74,6 +74,10 @@ class player():
 
         self.estTutoriel = False
 
+        self.score = 0
+        self.score_fruit = 50
+        self.score_fin = 100
+
     def sleep(self):
         self.dort = not self.dort
 
@@ -129,6 +133,8 @@ class player():
         for fruit in self.world.fruits:
             if fruit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
                 self.world.removeFruit(fruit)
+                self.score += self.score_fruit
+                
 
         for ennemi in self.world.ennemis:
             if ennemi.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
@@ -152,6 +158,8 @@ class player():
         if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == False:
                 self.victoire = True
+                self.score += self.score_fin
+                print(self.score)
         else:
             self.victoire = False    
           
@@ -276,3 +284,4 @@ class player():
                 self.screen.blit(porte_message, (self.world.fond.pos_x+5700, 500))
             self.screen.blit(fonduSurface, (0,0))
             pygame.display.update()
+

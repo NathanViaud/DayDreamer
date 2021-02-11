@@ -50,11 +50,12 @@ def runGame(screen):
     font = pygame.font.Font(None, 40)
     enemies_messsage = font.render("Attention aux ennemis ! ", True, black)
 
+
     # Joueur:
     monde = True
 
-
-
+    # Score
+    score_font = pygame.font.Font(None, 30)
 
     niveaux = []
     niveaux.append(tuto)
@@ -64,9 +65,11 @@ def runGame(screen):
 
     while monde:
         joueur = player(3, 100, screen, niveaux[level])
+        
         joue = True
         joueur.victoire = False
         while joue:
+            score = score_font.render("Score: "+str(joueur.score), True, black)
             pygame.time.wait(1)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -78,6 +81,13 @@ def runGame(screen):
             niveaux[level].update()
             joueur.deplaceAnimation()
             joueur.update()
+            screen.blit(score, (10,10))
+            if joueur.cle == False:
+                cle_pp = pygame.image.load('sprites/items/cle_pasprise.png')
+                screen.blit(cle_pp, (150,10))
+            else:
+                cle_p = pygame.image.load('sprites/items/cle_prise.png')
+                screen.blit(cle_p, (150,10))
             if tutorial == True:
                 joueur.estTutoriel = True
                 screen.blit(bienvenu, (niveaux[level].fond.pos_x+50,200))
@@ -91,7 +101,7 @@ def runGame(screen):
             else:
                 joueur.estTutoriel = False
             pygame.display.update()
-
+            
             while joueur.mort and joue:
                 screen.blit(mort, (0,0,1024,768))
                 pygame.display.update()
@@ -106,6 +116,8 @@ def runGame(screen):
                         elif event.key == pygame.K_SPACE:
                             joueur.mort = False
                             level = 1
+                            if level == 1:
+                                joueur.score = 0
                             niveaux[level] = genLevel.loadLevel(level)
                             joueur = player(3, 600, screen, niveaux[level])
             if joueur.victoire == True:

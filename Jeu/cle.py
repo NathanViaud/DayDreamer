@@ -3,7 +3,7 @@ import pygame
 class cle():
     #x,y : position
     def __init__(self, x , y, screen) :
-        img = pygame.image.load("sprites/items/cle.png")
+        img = pygame.image.load("sprites/items/cle_prise.png")
         self.img = img
         self.rect = self.img.get_rect()
         self.rect.x = x
@@ -31,6 +31,6 @@ class cle():
             self.img.fill(transparent)
         else:
             if self.prise == False:
-                img = pygame.image.load("sprites/items/cle.png")
+                img = pygame.image.load("sprites/items/cle_prise.png")
                 self.img = img
 
