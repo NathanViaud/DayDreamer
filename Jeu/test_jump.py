@@ -70,7 +70,8 @@ def runGame(screen):
     level = 0
     pts = 0
 
-    f1 = open('test.txt', 'r')
+    f = open('score.txt', 'a')
+    f1 = open('score.txt', 'r')
     lines = f1.readlines()
     for line in lines:
         l = line.split()
@@ -79,7 +80,7 @@ def runGame(screen):
         points = l2[1]
         print("nom : " + str(nom))
         print("score : " + str(points))
-    #f = open('test.txt', 'a')
+   
 
     while monde:
         if level != 0:
@@ -184,6 +185,7 @@ def runGame(screen):
         if level > len(niveaux):
             monde = False
         print(joueur.victoire)
-        #f.write(str("Nathan"))
-        #f.write(str("|"))
-        #f.write(str(pts))
+        f.write(str("Nathan"))
+        f.write(str("|"))
+        f.write(str(pts))
+        f.write('\n')
