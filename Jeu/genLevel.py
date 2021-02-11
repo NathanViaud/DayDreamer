@@ -299,6 +299,16 @@ class genLevel():
         f4 = fruit(2000, 430, self.screen)
         f5 = fruit(2540, 100, self.screen)
         f6 = fruit(3240, 150, self.screen)
+        f7 = fruit(4300, 700, self.screen)
+        f8 = fruit(4600, 700, self.screen)
+        f9 = fruit(4800, 700, self.screen)
+        f10 = fruit(4900, 700, self.screen)
+        f11 = fruit(6174, 700, self.screen)
+        f12 = fruit(6700, 220, self.screen)
+        f13 = fruit(7000, 220, self.screen)
+        f14 = fruit(7300, 220, self.screen)
+        f15 = fruit(7600, 700, self.screen)
+        f16 = fruit(7900, 700, self.screen)
 
         fruits.append(f1)
         fruits.append(f2)
@@ -306,6 +316,16 @@ class genLevel():
         fruits.append(f4)
         fruits.append(f5)
         fruits.append(f6)
+        fruits.append(f7)
+        fruits.append(f8)
+        fruits.append(f9)
+        fruits.append(f10)
+        fruits.append(f11)
+        fruits.append(f12)
+        fruits.append(f13)
+        fruits.append(f14)
+        fruits.append(f15)
+        fruits.append(f16)
 
         # Enemis:
         e1 = ennemi(2, 2000, 500, self.screen, 2000, 2000, 1, 350, 680, 1.75)
@@ -461,11 +481,29 @@ class genLevel():
         # Fruits du niveau:
         f1 = fruit(840, 250, self.screen)
         f2 = fruit(3155, 230, self.screen)
-        f3 = fruit(3155, 500, self.screen)
+        f3 = fruit(3155, 700, self.screen)
+        f4 = fruit(4500, 700, self.screen)
+        f5 = fruit(4900, 700, self.screen)
+        f6 = fruit(5300, 700, self.screen)
+        f7 = fruit(5700, 700, self.screen)
+        f8 = fruit(6100, 700, self.screen)
+        f9 = fruit(6500, 700, self.screen)
+        f10 = fruit(6900, 700, self.screen)
+        f11 = fruit(7300, 700, self.screen)
+        f12 = fruit(7700, 700, self.screen)
 
         fruits.append(f1)
         fruits.append(f2)
         fruits.append(f3)
+        fruits.append(f4)
+        fruits.append(f5)
+        fruits.append(f6)
+        fruits.append(f7)
+        fruits.append(f8)
+        fruits.append(f9)
+        fruits.append(f10)
+        fruits.append(f11)
+        fruits.append(f12)
 
         # Enemis:
         e1 = ennemi(1, 800, 768-18-50, self.screen, 500, 1200, 3, 768-18-50, 768-18-50, 3)
@@ -504,7 +542,7 @@ class genLevel():
         obs.append(obstacle2)
         obs.append(obstacle3)
         obs.append(obstacle4)
-
+#
         # triangle
         obs.append(obstacle5)
         obs.append(obstacle6)
@@ -512,7 +550,7 @@ class genLevel():
         obs.append(obstacle8)
         obs.append(obstacle9)
         obs.append(obstacle10)
-
+#
         # porte fin niveau jour
         obs.append(obstacle11)
         obs.append(obstacle12)
@@ -593,10 +631,28 @@ class genLevel():
         f1 = fruit(1815, 50, self.screen)
         f2 = fruit(2415, 500, self.screen)
         f3 = fruit(3880, 50, self.screen)
+        f4 = fruit(4100, 700, self.screen)
+        f5 = fruit(4500, 700, self.screen)
+        f6 = fruit(4900, 700, self.screen)
+        f7 = fruit(5300, 700, self.screen)
+        f8 = fruit(5700, 700, self.screen)
+        f9 = fruit(1200, 700, self.screen)
+        f10 = fruit(1400, 700, self.screen)
+        f11 = fruit(1600, 700, self.screen)
+        f12 = fruit(1800, 700, self.screen)
 
         fruits.append(f1)
         fruits.append(f2)
         fruits.append(f3)
+        fruits.append(f4)
+        fruits.append(f5)
+        fruits.append(f6)
+        fruits.append(f7)
+        fruits.append(f8)
+        fruits.append(f9)
+        fruits.append(f10)
+        fruits.append(f11)
+        fruits.append(f12)
 
         # Enemis:
         e1 = ennemi(1, 4500, 650, self.screen, 4499, 5000, 1, 350, 350, 1)

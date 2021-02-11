@@ -69,7 +69,7 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-    level = 1
+    level = 4
     pts = 0
     cmpt_mort = 0
     tete_mort = pygame.image.load("sprites/compteur_mort.png")
