@@ -30,7 +30,7 @@ font = pygame.font.Font(None, 40)
 enemies_messsage = font.render("Attention aux ennemis ! ", True, black)
 
 class player():
-    def __init__(self, x ,y, screen, world):
+    def __init__(self, x ,y, screen, world, pts):
         self.screen = screen
         self.world = world
         self.image = img

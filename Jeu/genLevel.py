@@ -213,7 +213,7 @@ class genLevel():
         p_saut6 = plateforme(2300, 500, self.screen, 140, 10, "plat")
         p_saut7 = plateforme(2500, 200, self.screen, 100, 10, "plat")
         p_saut8 = plateforme(2600, 300, self.screen, 100, 10, "plat")
-        p_saut9 = plateforme(3050, 450, self.screen, 100, 10, "plat")
+        p_saut9 = plateforme(3000, 450, self.screen, 100, 10, "plat")
         p_saut10 = plateforme(3200, 200, self.screen, 100, 10, "plat")
         p_saut11 = plateforme(3650, 500, self.screen, 100, 10, "plat")
         p_saut12 = plateforme(3850, 250, self.screen, 100, 10, "plat")
@@ -223,6 +223,8 @@ class genLevel():
         p_saut15 = plateforme(6150, 425, self.screen, 100, 10, "plat")
         p_saut16 = plateforme(6350, 350, self.screen, 100, 10, "plat")
         p_saut17 = plateforme(6550, 275, self.screen, 1000, 10, "plat")
+        p_saut18 = plateforme(7650, 450, self.screen, 100, 10, "plat")
+        p_saut19 = plateforme(7850, 600, self.screen, 100, 10, "plat")
 
         p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
 
@@ -245,6 +247,8 @@ class genLevel():
         plateformes.append(p_saut15)
         plateformes.append(p_saut16)
         plateformes.append(p_saut17)
+        plateformes.append(p_saut18)
+        plateformes.append(p_saut19)
 
         plateformes.append(p_porte)
 
