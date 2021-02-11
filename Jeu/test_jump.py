@@ -160,7 +160,8 @@ def runGame(screen):
             if joueur.victoire == True:
                 joue = False
                 level += 1
-            pygame.time.wait(1)
+            if level != 0:
+                pygame.time.wait(1)
         print(level)
         if level > len(niveaux):
             monde = False
