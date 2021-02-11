@@ -50,6 +50,9 @@ while loop:
         fondu = False
     else:
         if not pause:
+            screen.blit(bg, (0,0))
+            for b in buttons:
+                b.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     loop = False
@@ -75,9 +78,6 @@ while loop:
                             pygame.time.wait(1000)
                             test_jump.runGame(screen)
                             loop = False
-            screen.blit(bg, (0,0))
-            for b in buttons:
-                b.update()
         else:
             screen.blit(bgs[index], (0,0))
             index += 1
