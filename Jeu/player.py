@@ -13,7 +13,7 @@ marche2_reverse = pygame.transform.flip(marche2, True, False)
 jump = pygame.image.load("sprites/jump.png")
 jump_reverse = pygame.transform.flip(jump, True, False)
 black = (0,0,0)
-
+white = (255,255,255)
 
 lit_dodo = [pygame.image.load("sprites/items/anim_dodo1.png"), pygame.image.load("sprites/items/anim_dodo2.png"), pygame.image.load("sprites/items/anim_dodo3.png"), pygame.image.load("sprites/items/anim_dodo4.png"), pygame.image.load("sprites/items/anim_dodo5.png"), pygame.image.load("sprites/items/anim_dodo6.png")]
 
@@ -159,7 +159,6 @@ class player():
             if self.world.nuit == False:
                 self.victoire = True
                 self.score += self.score_fin
-                print(self.score)
         else:
             self.victoire = False    
           
@@ -232,7 +231,7 @@ class player():
                 self.screen.blit(enemies_messsage, (self.world.fond.pos_x+4250, 200))
                 self.screen.blit(cle_message, (self.world.fond.pos_x+5200,350))
                 self.screen.blit(porte_message, (self.world.fond.pos_x+5700, 500))
-            self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - self.image.get_height() - 18))
+            self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - (pygame.display.get_surface().get_height() - self.world.lit.rect.y + (self.image.get_rect().height - self.world.lit.rect.height))))
             pygame.display.update()
             pygame.time.wait(500)
         fondu_noir = False

@@ -69,7 +69,11 @@ def runGame(screen):
         joue = True
         joueur.victoire = False
         while joue:
-            score = score_font.render("Score: "+str(joueur.score), True, black)
+            if niveaux[level].nuit == True:
+                color = (255,255,255)
+            else:
+                color = (0,0,0)
+            score = score_font.render("Score: "+str(joueur.score), True, color)
             pygame.time.wait(1)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -89,6 +93,31 @@ def runGame(screen):
                 cle_p = pygame.image.load('sprites/items/cle_prise.png')
                 screen.blit(cle_p, (150,10))
             if tutorial == True:
+                black = (0,0,0)
+                white = (255,255,255)
+                font = pygame.font.Font(None, 40)
+                if niveaux[level].nuit == True:
+                    bienvenu = font.render("Bienvenue dans DayDreaming !", True, white)
+                    mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, white)
+                    saut = font.render("Pour sauter utilisez la barre espace", True, white)
+                    font = pygame.font.Font(None, 30)
+                    fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, white)
+                    lit_message = font.render("Utilisez la touche F pour dormir dans le lit", True, white)
+                    cle_message = font.render("Prenez la clé pour ouvrir la porte", True, white)
+                    porte_message = font.render("Utilisez la porte pour finir le Tutoriel", True, white)
+                    font = pygame.font.Font(None, 40)
+                    enemies_messsage = font.render("Attention aux ennemis ! ", True, white)
+                else:
+                    bienvenu = font.render("Bienvenue dans DayDreaming !", True, black)
+                    mouvement_tuto = font.render("Utilisez les fleches directionnelles pour bouger", True, black)
+                    saut = font.render("Pour sauter utilisez la barre espace", True, black)
+                    font = pygame.font.Font(None, 30)
+                    fruits_message = font.render("Prenez les fruit pour augmenter votre score !", True, black)
+                    lit_message = font.render("Utilisez la touche F pour dormir dans le lit", True, black)
+                    cle_message = font.render("Prenez la clé pour ouvrir la porte", True, black)
+                    porte_message = font.render("Utilisez la porte pour finir le Tutoriel", True, black)
+                    font = pygame.font.Font(None, 40)
+                    enemies_messsage = font.render("Attention aux ennemis ! ", True, black)
                 joueur.estTutoriel = True
                 screen.blit(bienvenu, (niveaux[level].fond.pos_x+50,200))
                 screen.blit(mouvement_tuto, (niveaux[level].fond.pos_x+50, 300))
@@ -130,4 +159,3 @@ def runGame(screen):
         if level > 1:
             monde = False
         print(joueur.victoire)
-    pygame.quit()
