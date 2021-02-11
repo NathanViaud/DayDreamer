@@ -74,6 +74,8 @@ def runGame(screen):
     cmpt_mort = 0
     tete_mort = pygame.image.load("sprites/compteur_mort.png")
 
+    f = open('Menu/score.txt','a')
+
     while monde:
         if level != 0:
             tutorial = False
@@ -165,7 +167,9 @@ def runGame(screen):
                             joue = False
                             monde = False
                             pseudo = runScore(screen)
-                            print(pseudo)
+                            f.write(str(pseudo))
+                            f.write(str('|'))
+                            f.write(str(pts) + '\n')
                             runLeaderboard(screen)
                         elif event.key == pygame.K_SPACE:
                             joue = False
