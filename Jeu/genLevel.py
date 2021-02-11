@@ -122,16 +122,13 @@ class genLevel():
         p_saut3 = plateforme(1350, 650, self.screen, 50, 50, "bloc")
         p_saut4 = plateforme(1350, 600, self.screen, 50, 50, "bloc")
 
-        for i in range (0,4):
-            for j in range (0,6):
-                plateformes.append(plateforme(1400+(i*50), 700-(j*50), self.screen, 50, 50, "bloc"))
+        plateformes.append(plateforme(1400, 768-350-18, self.screen, 200, 350, "bloc_4x7"))
 
         p_saut6 = plateforme(1820, 300, self.screen, 100, 10, "plat")
         p_saut7 = plateforme(2400,700, self.screen, 50, 50, "bloc")
         p_saut8 = plateforme(2785,700, self.screen, 50, 50, "bloc")
-        for i in range (0,2):
-            for j in range (0,3):
-                plateformes.append(plateforme(1640+(i*50), 700-(j*50), self.screen, 50, 50, "bloc"))
+        
+        plateformes.append(plateforme(1640, 768-150-18, self.screen, 100, 150, "bloc_2x3"))
 
         p_saut10 = plateforme(2578, 500, self.screen, 70, 10, "plat")
         p_saut11 = plateforme(1300, 650, self.screen, 50, 50, "bloc")
@@ -142,8 +139,6 @@ class genLevel():
         p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
         p_cle1 = plateforme(4250, 600, self.screen, 100, 10, "plat")
         p_cle2 = plateforme(4600, 450, self.screen, 100, 10, "plat")
-        for j in range (0,3):
-                plateformes.append(plateforme(4800+(i*100), 450, self.screen, 100, 50, "plat"))
 
         p_cle4 = plateforme(5250,450, self.screen, 100, 10, "plat")
         plateformes.append(sol)

@@ -27,6 +27,8 @@ class button:
             self.text = font.render(self.contenu, True, (116,116,116))
         elif self.contenu == "Lancement de la partie":
             self.text = font_lancement.render(self.contenu, True, (116,116,116))
+        elif self.contenu == "LeaderBoard":
+            self.text = font.render(self.contenu, True, (197,152,197))
         else:
             self.text = font.render(self.contenu, True, Black)
         self.screen.blit(self.text, (self.rect.x, self.rect.y))

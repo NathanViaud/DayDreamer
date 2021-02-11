@@ -3,7 +3,7 @@ import pygame
 class fond:
     # taille : taille en x du niveau
     def __init__(self, screen, taille):
-        img = pygame.image.load("images/fond_j.png")
+        img = pygame.image.load("images/fond_j.jpg")
         self.img = img
         self.pos_x= 0
         self.screen = screen
@@ -24,8 +24,8 @@ class fond:
     def sleep(self):
         self.nuit = not self.nuit
         if self.nuit == True:
-            img = pygame.image.load("images/fond.png")  #fond nuit
+            img = pygame.image.load("images/fond.jpg")  #fond nuit
         else:
-            img = pygame.image.load("images/fond_j.png")
+            img = pygame.image.load("images/fond_j.jpg")
         self.img = img
         self.update()

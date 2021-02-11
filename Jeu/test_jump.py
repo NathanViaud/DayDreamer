@@ -14,7 +14,7 @@ from Jeu.genLevel import *
 pygame.init()
 
 def runGame(screen):
-
+    from Jeu.Menu.menu import runMenu
     global genLevel
 
     pygame.display.set_caption("cours forest")
@@ -67,7 +67,7 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-    level = 3
+    level = 1
     pts = 0
 
     f = open('score.txt', 'a')
@@ -189,3 +189,5 @@ def runGame(screen):
         f.write(str("|"))
         f.write(str(pts))
         f.write('\n')
+
+    runMenu(screen)
