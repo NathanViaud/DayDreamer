@@ -82,7 +82,8 @@ def runGame(screen):
             else:
                 color = (0,0,0)
             score = score_font.render("Score: "+str(joueur.score), True, color)
-            pygame.time.wait(1)
+            if level != 0:
+                pygame.time.wait(1)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     joue = False
