@@ -259,8 +259,8 @@ class player():
         fonduSurface.fill((0,0,0))
         self.world.update()
         pygame.display.update()
-        for alpha in range(0, 255):
-            fonduSurface.set_alpha(255 - alpha/2)
+        for alpha in range(0, 510):
+            fonduSurface.set_alpha((510 - alpha)/2)
             self.world.update()
             self.screen.blit(self.screen, (0,0))
             self.image = img
