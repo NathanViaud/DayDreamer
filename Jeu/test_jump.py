@@ -67,7 +67,7 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-    level = 0
+    level = 3
     pts = 0
 
     while monde:

@@ -48,8 +48,10 @@ class genLevel():
         p_porte = plateforme(4000, sol.rect.y-768, self.screen, 100,768, "porte")
         p_cle1 = plateforme(4250, 600, self.screen, 100, 10, "plat")
         p_cle2 = plateforme(4600, 450, self.screen, 100, 10, "plat")
-        p_cle3 = plateforme(4800, 450, self.screen, 300, 10, "plat")
-        p_cle4 = plateforme(5250,450, self.screen, 100, 10, "plat")
+        p_cle3 = plateforme(4810, 450, self.screen, 100, 10, "plat")
+        p_cle4 = plateforme(4900, 450, self.screen, 100, 10, "plat")
+        p_cle5 = plateforme(4990, 450, self.screen, 100, 10, "plat")
+        p_cle6 = plateforme(5250,450, self.screen, 100, 10, "plat")
         plateformes.append(sol)
         plateformes.append(p_saut1)
         plateformes.append(p_saut2)
@@ -64,6 +66,8 @@ class genLevel():
         plateformes.append(p_cle2)
         plateformes.append(p_cle3)
         plateformes.append(p_cle4)
+        plateformes.append(p_cle5)
+        plateformes.append(p_cle6)
 
         # Fruits du niveau:
         fruits = []
@@ -113,29 +117,46 @@ class genLevel():
         obs = []
         fond = fond(self.screen, 6250)
         sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
-        p_saut1 = plateforme(1300, 600, self.screen, 100, 150, "bloc")
-        p_saut2 = plateforme(1400, 450, self.screen, 200, 1000, "bloc")
-        p_saut3 = plateforme(1820, 300, self.screen, 100, 10, "plat")
-        p_saut4 = plateforme(2400,700, self.screen, 50, 50, "bloc")
-        p_saut5 = plateforme(2785,700, self.screen, 50, 50, "bloc")
-        p_saut6 = plateforme(1640, 600, self.screen, 100, 150, "plat")
-        p_saut7 = plateforme(2578, 500, self.screen, 70, 10, "plat")
+        p_saut1 = plateforme(1300, 700, self.screen, 50, 50, "bloc")
+        p_saut2 = plateforme(1350, 700, self.screen, 50, 50, "bloc")
+        p_saut3 = plateforme(1350, 650, self.screen, 50, 50, "bloc")
+        p_saut4 = plateforme(1350, 600, self.screen, 50, 50, "bloc")
+
+        for i in range (0,4):
+            for j in range (0,6):
+                plateformes.append(plateforme(1400+(i*50), 700-(j*50), self.screen, 50, 50, "bloc"))
+
+        p_saut6 = plateforme(1820, 300, self.screen, 100, 10, "plat")
+        p_saut7 = plateforme(2400,700, self.screen, 50, 50, "bloc")
+        p_saut8 = plateforme(2785,700, self.screen, 50, 50, "bloc")
+        for i in range (0,2):
+            for j in range (0,3):
+                plateformes.append(plateforme(1640+(i*50), 700-(j*50), self.screen, 50, 50, "bloc"))
+
+        p_saut10 = plateforme(2578, 500, self.screen, 70, 10, "plat")
+        p_saut11 = plateforme(1300, 650, self.screen, 50, 50, "bloc")
+        p_saut12 = plateforme(1250, 700, self.screen, 50, 50, "bloc")
         p_sautfruit2 = plateforme(3200, 430, self.screen, 100, 10, "plat")
         p_sautfruit3 = plateforme(3400, 250, self.screen, 100, 10, "plat")
         p_sautfruit4 = plateforme(2790, 250, self.screen, 100, 10, "plat")
         p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
         p_cle1 = plateforme(4250, 600, self.screen, 100, 10, "plat")
         p_cle2 = plateforme(4600, 450, self.screen, 100, 10, "plat")
-        p_cle3 = plateforme(4800, 450, self.screen, 300, 10, "plat")
+        for j in range (0,3):
+                plateformes.append(plateforme(4800+(i*100), 450, self.screen, 100, 50, "plat"))
+
         p_cle4 = plateforme(5250,450, self.screen, 100, 10, "plat")
         plateformes.append(sol)
         plateformes.append(p_saut1)
         plateformes.append(p_saut2)
         plateformes.append(p_saut3)
         plateformes.append(p_saut4)
-        plateformes.append(p_saut5)
         plateformes.append(p_saut6)
         plateformes.append(p_saut7)
+        plateformes.append(p_saut8)       
+        plateformes.append(p_saut10)
+        plateformes.append(p_saut11)
+        plateformes.append(p_saut12)
         plateformes.append(p_sautfruit2)
         plateformes.append(p_sautfruit3)
         plateformes.append(p_sautfruit4)
@@ -222,7 +243,11 @@ class genLevel():
         p_saut14 = plateforme(5950, 500, self.screen, 100, 10, "plat")
         p_saut15 = plateforme(6150, 425, self.screen, 100, 10, "plat")
         p_saut16 = plateforme(6350, 350, self.screen, 100, 10, "plat")
-        p_saut17 = plateforme(6550, 275, self.screen, 1000, 10, "plat")
+        p_saut17 = plateforme(6550, 275, self.screen, 100, 10, "plat")
+
+        for i in range (0,9):
+            plateformes.append(plateforme(6600+(i*100), 275, self.screen, 100, 10, "plat"))
+
         p_saut18 = plateforme(7650, 450, self.screen, 100, 10, "plat")
         p_saut19 = plateforme(7850, 600, self.screen, 100, 10, "plat")
 
@@ -376,7 +401,11 @@ class genLevel():
         p_saut1 = plateforme(800, 500, self.screen, 100, 10, "plat")
         p_saut2 = plateforme(1050, 450, self.screen, 100, 10, "plat")
         p_saut3 = plateforme(800, 300, self.screen, 100, 10, "plat")
-        p_saut4 = plateforme(1300, 250, self.screen, 100, 500, "plat")
+
+        for i in range (0,2):
+            for j in range (0,10):
+                plateformes.append(plateforme(1300+(i*50), 250+(j*50), self.screen, 50, 50, "bloc"))
+
         # parcours
         p_saut5 = plateforme(2100, 500, self.screen, 100, 10, "plat")
         p_saut6 = plateforme(2450, 420, self.screen, 80, 10, "plat")
@@ -400,7 +429,6 @@ class genLevel():
         plateformes.append(p_saut1)
         plateformes.append(p_saut2)
         plateformes.append(p_saut3)
-        plateformes.append(p_saut4)
         plateformes.append(p_saut5)
         plateformes.append(p_saut6)
         plateformes.append(p_saut7)
@@ -425,7 +453,7 @@ class genLevel():
         fruits.append(f3)
 
         # Enemis:
-        e1 = ennemi(1, 800, 650, self.screen, 799, 1200, 3, 350, 350, 3)
+        e1 = ennemi(1, 800, 768-18-50, self.screen, 799, 1200, 3, 768-18-50, 768-18-50, 3)
         e2 = ennemi(2, 7500, 300, self.screen, 7500, 7500, 4, 50, 680, 4)
         e3 = ennemi(2, 7000, 300, self.screen, 7000, 7000, 4, 50, 680, 4)
         e4 = ennemi(2, 7250, 300, self.screen, 7250, 7250, 4, 50, 680, 4)
