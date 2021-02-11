@@ -22,6 +22,9 @@ def runGame(screen):
     genLevel = genLevel(screen,0)
     tuto = genLevel.loadLevel(0)
     niveau1 = genLevel.loadLevel(1)
+    niveau2 = genLevel.loadLevel(2)
+    niveau3 = genLevel.loadLevel(3)
+    niveau4 = genLevel.loadLevel(4)
 
 
     joue = True
@@ -60,11 +63,14 @@ def runGame(screen):
     niveaux = []
     niveaux.append(tuto)
     niveaux.append(niveau1)
+    niveaux.append(niveau2)
+    niveaux.append(niveau3)
+    niveaux.append(niveau4)
 
     level = 0
 
     while monde:
-        joueur = player(3, 100, screen, niveaux[level])
+        joueur = player(3, 100, screen, niveaux[0])
         
         joue = True
         joueur.victoire = False

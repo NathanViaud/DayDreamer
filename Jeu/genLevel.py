@@ -11,8 +11,8 @@ from Jeu.lit import *
 from Jeu.sortie import *
 
 class genLevel():
-    def __init__(self,self.screen, niveau):
-        self.screen =self.screen
+    def __init__(self,screen, niveau):
+        self.screen = screen
         self.niveau = niveau
 
 
@@ -20,8 +20,14 @@ class genLevel():
         self.niveau = niveau
         if self.niveau == 0:
             return self.genTuto()
-        if self.niveau == 1:
+        elif self.niveau == 1:
             return self.genNiveau1()
+        elif self.niveau == 2:
+            return self.genNiveau2()
+        elif self.niveau == 3:
+            return self.genNiveau3()
+        elif self.niveau == 4:
+            return self.genNiveau4()
 
 
     def genTuto(self):
@@ -106,18 +112,17 @@ class genLevel():
         ennemis = []
         obs = []
         fond = fond(self.screen, 6250)
-        # Sol du terrain
         sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
         p_saut1 = plateforme(1300, 600, self.screen, 100, 150, "plat")
         p_saut2 = plateforme(1400, 450, self.screen, 200, 1000, "plat")
-        p_saut3 = plateforme(1820, 200, self.screen, 100, 10, "plat")
+        p_saut3 = plateforme(1820, 300, self.screen, 100, 10, "plat")
         p_saut4 = plateforme(2400,700, self.screen, 50, 50, "plat")
         p_saut5 = plateforme(2785,700, self.screen, 50, 50, "plat")
         p_saut6 = plateforme(1640, 600, self.screen, 100, 150, "plat")
         p_saut7 = plateforme(2578, 500, self.screen, 70, 10, "plat")
         p_sautfruit2 = plateforme(3200, 430, self.screen, 100, 10, "plat")
         p_sautfruit3 = plateforme(3400, 250, self.screen, 100, 10, "plat")
-        p_sautfruit4 = plateforme(2790, 220, self.screen, 100, 10, "plat")
+        p_sautfruit4 = plateforme(2790, 250, self.screen, 100, 10, "plat")
         p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
         p_cle1 = plateforme(4250, 600, self.screen, 100, 10, "plat")
         p_cle2 = plateforme(4600, 450, self.screen, 100, 10, "plat")
@@ -144,9 +149,9 @@ class genLevel():
         f2 = fruit(3235, 380, self.screen)
         f3 = fruit(3435, 200, self.screen)
         f4 = fruit(1605, 700, self.screen)
-        f5 = fruit(2600, 100, self.screen)
-        f6 = fruit(2820, 180, self.screen)
-        f7 = fruit(1850, 160, self.screen)
+        f5 = fruit(2600, 180, self.screen)
+        f6 = fruit(2820, 210, self.screen)
+        f7 = fruit(1850, 260, self.screen)
         fruits.append(f2)
         fruits.append(f3)
         fruits.append(f4)
@@ -155,10 +160,10 @@ class genLevel():
         fruits.append(f7)
         # Enemis:
         e1 = ennemi(2, 4470, 500, self.screen, 4470, 4470, 1, 200, 650, 2)
-        e2 = ennemi(2, 4670, 500, self.screen, 4570, 4570, 1, 200, 650, 3)
-        e3 = ennemi(2, 4870, 500, self.screen, 4570, 4570, 1, 200, 650, 4)
+        e2 = ennemi(2, 4670, 500, self.screen, 4570, 4570, 1, 200, 600, 3)
+        e3 = ennemi(2, 4870, 500, self.screen, 4570, 4570, 1, 200, 600, 4)
 
-        # e2 = ennemi(1, 4800, 350,self.screen, 4799, 5050, 2, 350, 350, 1)
+        # e2 = ennemi(1, 4800, 350, screen, 4799, 5050, 2, 350, 350, 1)
         ennemis.append(e1)
         ennemis.append(e2)
         ennemis.append(e3)
@@ -191,6 +196,14 @@ class genLevel():
         return world(fond, plateformes, fruits, ennemis, obs, cle1, l1, sort)
 
     def genNiveau2(self):
+        from Jeu.ennemi import ennemi
+        from Jeu.fond import fond
+        from Jeu.ennemi import ennemi
+        plateformes = []
+        fruits = []
+        ennemis = []
+        obs = []
+        fond = fond(self.screen, 8300)
         sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
         p_saut1 = plateforme(800, 500, self.screen, 100, 10, "plat")
         p_saut2 = plateforme(650, 350, self.screen, 100, 10, "plat")
@@ -239,7 +252,7 @@ class genLevel():
         f1 = fruit(840, 250, self.screen)
         f2 = fruit(1630, 545, self.screen)
         f3 = fruit(1630, 375, self.screen)
-        f4 = fruit(2000, 430, self.screen.screen)
+        f4 = fruit(2000, 430, self.screen)
         f5 = fruit(2540, 100, self.screen)
         f6 = fruit(3240, 150, self.screen)
 
@@ -347,7 +360,14 @@ class genLevel():
         return world(fond, plateformes, fruits, ennemis, obs, cle1, l1, sort)
 
     def genNiveau3(self):
-
+        from Jeu.ennemi import ennemi
+        from Jeu.fond import fond
+        from Jeu.ennemi import ennemi
+        plateformes = []
+        fruits = []
+        ennemis = []
+        obs = []
+        fond = fond(self.screen, 8200)
         sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
         p_saut1 = plateforme(800, 500, self.screen, 100, 10, "plat")
         p_saut2 = plateforme(1050, 450, self.screen, 100, 10, "plat")
@@ -361,13 +381,13 @@ class genLevel():
         # fin parcours jour
 
         #-----------nuit---------------#
-        p_saut9 = plateforme(4300, 500, self.screen, 100, 10, "plat")
-        p_saut10 = plateforme(4650, 420, self.screen, 80, 10, "plat")
-        p_saut11 = plateforme(5000, 360, self.screen, 60, 10, "plat")
-        p_saut12 = plateforme(5350, 280, self.screen, 40, 10, "plat")
-        p_saut13 = plateforme(5700, 280, self.screen, 20, 10, "plat")
-        p_saut14 = plateforme(6030, 280, self.screen, 20, 10, "plat")
-        p_saut15 = plateforme(6330, 280, self.screen, 10, 10, "plat")
+        p_saut9 = plateforme(4300, 500, self.screen, 110, 10, "plat")
+        p_saut10 = plateforme(4650, 420, self.screen, 90, 10, "plat")
+        p_saut11 = plateforme(5000, 360, self.screen, 70, 10, "plat")
+        p_saut12 = plateforme(5350, 280, self.screen, 50, 10, "plat")
+        p_saut13 = plateforme(5700, 280, self.screen, 30, 10, "plat")
+        p_saut14 = plateforme(6030, 280, self.screen, 30, 10, "plat")
+        p_saut15 = plateforme(6330, 280, self.screen, 20, 10, "plat")
 
 
         p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
@@ -469,6 +489,14 @@ class genLevel():
 
 
     def genNiveau4(self):
+        from Jeu.ennemi import ennemi
+        from Jeu.fond import fond
+        from Jeu.ennemi import ennemi
+        plateformes = []
+        fruits = []
+        ennemis = []
+        obs = []
+        fond = fond(self.screen, 8200)
         sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
         p_saut1 = plateforme(1800, 500, self.screen, 100, 10, "plat")
         p_saut2 = plateforme(2100, 400, self.screen, 100, 10, "plat")
