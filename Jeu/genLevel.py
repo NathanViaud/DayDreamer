@@ -74,9 +74,15 @@ class genLevel():
         f1 = fruit(3035, 555, self.screen)
         f2 = fruit(3235, 400, self.screen)
         f3 = fruit(3435, 200, self.screen)
+        f4 = fruit(4800, 400, self.screen)
+        f5 = fruit(5000, 400, self.screen)
+        f6 = fruit(5500, 650, self.screen)
         fruits.append(f1)
         fruits.append(f2)
         fruits.append(f3)
+        fruits.append(f4)
+        fruits.append(f5)
+        fruits.append(f6)
 
         # Enemis:
         e1 = ennemi(2, 4470, 500, self.screen, 4470, 4470, 1, 300, 650, 2)

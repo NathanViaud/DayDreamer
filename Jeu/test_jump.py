@@ -67,8 +67,14 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
+<<<<<<< Updated upstream
     level = 3
+=======
+    level = 0
+>>>>>>> Stashed changes
     pts = 0
+    cmpt_mort = 0
+    tete_mort = pygame.image.load("sprites/compteur_mort.png")
 
     f = open('score.txt', 'a')
     f1 = open('score.txt', 'r')
@@ -108,9 +114,12 @@ def runGame(screen):
             joueur.deplaceAnimation()
             joueur.update()
             screen.blit(score, (10,10))
+            screen.blit(tete_mort, (250,2))
+            morts = score_font.render("x "+str(cmpt_mort), True, color)
+            screen.blit(morts, (285,7))
             if joueur.cle == False:
                 cle_pp = pygame.image.load('sprites/items/cle_pasprise.png')
-                screen.blit(cle_pp, (150,10))
+                screen.blit(cle_pp, (150,5))
             else:
                 cle_p = pygame.image.load('sprites/items/cle_prise.png')
                 screen.blit(cle_p, (150,10))
@@ -155,10 +164,11 @@ def runGame(screen):
             
             if joueur.mort :
                 pts -= 10
+                cmpt_mort += 1
 
             while joueur.mort and joue:
                 screen.blit(mort, (0,0,1024,768))
-                pygame.display.update()
+                pygame.display.update()                        
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         joue = False
@@ -173,10 +183,10 @@ def runGame(screen):
                             if level == 1:
                                 joueur.score = 0
                             niveaux[level] = genLevel.loadLevel(level)
-                            joueur = player(3, 600, screen, niveaux[level], pts)
+                            joueur = player(3, 600, screen, niveaux[level], pts)               
             if joueur.victoire == True:
                 if level != 0:
-                    pts += joueur.score
+                    pts += joueur.score                   
                 joue = False
                 level += 1
             if level != 0:

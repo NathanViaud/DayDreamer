@@ -17,6 +17,7 @@ Nathan|0
 Nathan|0
 Nathan|0
 Nathan|0
+<<<<<<< Updated upstream
 Nathan|400
 Nathan|800
 Nathan|790
@@ -86,6 +87,10 @@ Nathan|110
 Nathan|100
 Nathan|90
 Nathan|90
+=======
+Nathan|-10
+Nathan|-10
+>>>>>>> Stashed changes
 Nathan|0
 Nathan|0
 Nathan|-10
@@ -101,6 +106,7 @@ Nathan|-100
 Nathan|-110
 Nathan|-120
 Nathan|-130
+<<<<<<< Updated upstream
 Nathan|-140
 Nathan|-150
 Nathan|-160
@@ -140,3 +146,34 @@ Nathan|-60
 Nathan|-70
 Nathan|-80
 Nathan|120
+=======
+Nathan|-130
+Nathan|0
+Nathan|0
+Nathan|0
+Nathan|0
+Nathan|0
+Nathan|0
+Nathan|0
+Nathan|0
+Nathan|-10
+Nathan|-10
+Nathan|-10
+Nathan|-20
+Nathan|-20
+Nathan|0
+Nathan|0
+Nathan|-10
+Nathan|-20
+Nathan|-20
+Nathan|-10
+Nathan|-10
+Nathan|-10
+Nathan|-10
+Nathan|-10
+Nathan|-20
+Nathan|-20
+Nathan|0
+Nathan|0
+Nathan|0
+>>>>>>> Stashed changes
