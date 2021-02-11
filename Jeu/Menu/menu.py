@@ -21,13 +21,18 @@ button1 = button(0, 0, "Jouer", True, screen)
 
 button2 = button(0, 0, "Quitter", False, screen)
 
+button3 = button(0, 0, "LeaderBoard", False, screen)
+
 button1.rect.x = (screen.get_width() - button1.rect.width) / 2
 button1.rect.y = (screen.get_height() - button1.rect.height) / 2 - 30
 
 button2.rect.x = (screen.get_width() - button2.rect.width) / 2 
 button2.rect.y = (screen.get_height() - button2.rect.height + 500) / 2 - 150
 
-buttons = [button1, button2]
+button3.rect.x = (screen.get_width() - button3.rect.width) / 2
+button3.rect.y = (screen.get_height() - button3.rect.height + 1000) /2 - 300
+
+buttons = [button1, button2, button3]
 
 def reveille():
     fonduSurface = pygame.Surface(pygame.display.get_window_size())
@@ -65,7 +70,13 @@ while loop:
                     if event.key == pygame.K_UP and button2.active:
                         button2.active = False
                         button1.active = True
+                    if event.key == pygame.K_LEFT:
+                        button1.active = False
+                        button2.active = False
+                        button3.active = True                        
                     if event.key == pygame.K_RETURN:
+                        if button3.active:
+                            loop = False
                         if button2.active:
                             loop = False
                         elif button1.active:
