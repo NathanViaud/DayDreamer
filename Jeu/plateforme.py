@@ -39,12 +39,18 @@ class plateforme():
             self.y_initial = self.rect.y
         self.nuit = not self.nuit
         if self.nuit == True:
-            img = pygame.image.load("sprites/plateforme/p1.png")  #plateformes nuit
+            img = pygame.image.load("sprites/plateforme/porte.png")  #plateformes nuit
             if self.type == "porte":
                 self.img = pygame.transform.scale(img, (0, 0))
                 self.rect = self.img.get_rect()
+            elif self.type == "bloc":
+                self.img = pygame.image.load("sprites/plateforme/bloc_nuit.png")
+            elif self.type == "sol":
+                self.img = pygame.image.load("sprites/plateforme/sol_nuit.png")
+            elif self.type == "plat":
+                self.img = pygame.image.load("sprites/plateforme/p1_nuit.png")
         else:
-            img = pygame.image.load("sprites/plateforme/p1.png")  #plateformes jour
+            img = pygame.image.load("sprites/plateforme/porte.png")  #plateformes jour
             if self.type == "porte":
                 self.img = pygame.transform.scale(img, (self.width, self.height))
                 self.rect.x = self.x_initial
@@ -52,8 +58,11 @@ class plateforme():
                 self.rect.width = self.width
                 self.rect.height = self.height
             elif self.type == "bloc":
-                img = pygame.image.load("sprites/plateforme/bloc.png")
-            #elif self.type == "plat":
+                self.img = pygame.image.load("sprites/plateforme/bloc.png")
+            elif self.type == "plat":
+                self.img = pygame.image.load("sprites/plateforme/p1.png")
+            elif self.type == "sol":
+                self.img = pygame.image.load("sprites/plateforme/sol.png")
             #elif self.type == "sol":
         self.update()
 
