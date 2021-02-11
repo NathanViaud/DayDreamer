@@ -114,9 +114,9 @@ class player():
         for plateforme in self.world.plateformes:
             if plateforme.rect.colliderect(self.rect.x+vx, self.rect.y, self.width, self.height):
                 vx =0
-                if plateforme.type == "porte":
-                    if self.cle == True:
-                        plateforme.removePorte()
+                if self.cle:
+                    if plateforme.type == "porte":
+                        self.world.removePorte(self)
             if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
                 self.last_plateform = plateforme
                 if self.vel_y < 0:
@@ -254,7 +254,7 @@ class player():
                 self.screen.blit(cle_message, (self.world.fond.pos_x+5200,350))
                 self.screen.blit(porte_message, (self.world.fond.pos_x+5700, 500))
             self.image = lit_dodo[5]
-            self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - self.image.get_height() - 18))
+            self.screen.blit(self.image, (self.world.lit.rect.x, pygame.display.get_surface().get_height() - (pygame.display.get_surface().get_height() - self.world.lit.rect.y + (self.image.get_rect().height - self.world.lit.rect.height))))
             self.screen.blit(fonduSurface, (0,0))
             pygame.display.update()
             if alph >= 255:

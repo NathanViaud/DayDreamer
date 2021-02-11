@@ -54,6 +54,11 @@ class plateforme():
 
     def removePorte(self):
         if self.type == "porte":
-            self.img = pygame.transform.scale(self.img, (0, 0))
-            self.rect = self.img.get_rect()
-        self.update()
+            for i in range(0,self.rect.height):
+                self.img = pygame.transform.scale(self.img, (0, self.rect.y+1))
+                self.rect = self.img.get_rect()
+                self.update()
+                print(self.rect.y)
+                pygame.display.update()
+                pygame.time.wait(1)
+        

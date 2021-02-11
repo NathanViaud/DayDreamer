@@ -70,7 +70,9 @@ def runGame(screen):
     level = 0
 
     while monde:
-        joueur = player(3, 100, screen, niveaux[0])
+        if level != 0:
+            tutorial = False
+        joueur = player(3, 100, screen, niveaux[level])
         
         joue = True
         joueur.victoire = False
@@ -149,8 +151,8 @@ def runGame(screen):
                             joue = False
                             monde = False
                         elif event.key == pygame.K_SPACE:
+                            joue = False
                             joueur.mort = False
-                            level = 1
                             if level == 1:
                                 joueur.score = 0
                             niveaux[level] = genLevel.loadLevel(level)
@@ -160,8 +162,6 @@ def runGame(screen):
                 level += 1
             pygame.time.wait(1)
         print(level)
-        if level != 0:
-            tutorial = False
-        if level > 1:
+        if level > len(niveaux):
             monde = False
         print(joueur.victoire)
