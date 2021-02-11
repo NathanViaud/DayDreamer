@@ -122,7 +122,7 @@ class genLevel():
         p_saut3 = plateforme(1350, 650, self.screen, 50, 50, "bloc")
         p_saut4 = plateforme(1350, 600, self.screen, 50, 50, "bloc")
 
-        plateformes.append(plateforme(1400, 768-350-18, self.screen, 200, 350, "bloc_4x7"))
+        plateformes.append(plateforme(1400, 768-300-18, self.screen, 200, 300, "bloc_4x7"))
 
         p_saut6 = plateforme(1820, 300, self.screen, 100, 10, "plat")
         p_saut7 = plateforme(2400,700, self.screen, 50, 50, "bloc")
@@ -139,7 +139,8 @@ class genLevel():
         p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
         p_cle1 = plateforme(4250, 600, self.screen, 100, 10, "plat")
         p_cle2 = plateforme(4600, 450, self.screen, 100, 10, "plat")
-
+        for j in range (0,3):
+                plateformes.append(plateforme(4800+(j*100), 450, self.screen, 100, 50, "plat"))
         p_cle4 = plateforme(5250,450, self.screen, 100, 10, "plat")
         plateformes.append(sol)
         plateformes.append(p_saut1)
@@ -156,10 +157,9 @@ class genLevel():
         plateformes.append(p_sautfruit3)
         plateformes.append(p_sautfruit4)
         plateformes.append(p_porte)
-        # plateformes.append(p_cle1)
-        # plateformes.append(p_cle2)
-        # plateformes.append(p_cle3)
-        # plateformes.append(p_cle4)
+        plateformes.append(p_cle1)
+        plateformes.append(p_cle2)
+        plateformes.append(p_cle4)
 
         # Fruits du niveau:
         f2 = fruit(3235, 380, self.screen)
@@ -448,7 +448,7 @@ class genLevel():
         fruits.append(f3)
 
         # Enemis:
-        e1 = ennemi(1, 800, 768-18-50, self.screen, 799, 1200, 3, 768-18-50, 768-18-50, 3)
+        e1 = ennemi(1, 800, 768-18-50, self.screen, 500, 1200, 3, 768-18-50, 768-18-50, 3)
         e2 = ennemi(2, 7500, 300, self.screen, 7500, 7500, 4, 50, 680, 4)
         e3 = ennemi(2, 7000, 300, self.screen, 7000, 7000, 4, 50, 680, 4)
         e4 = ennemi(2, 7250, 300, self.screen, 7250, 7250, 4, 50, 680, 4)
@@ -504,7 +504,7 @@ class genLevel():
         cle1 = cle(6330, 80, self.screen)
 
         #lit
-        l1 = lit(3850, 690, self.screen)
+        l1 = lit(3850, 735, self.screen)
 
 
         # Sortie

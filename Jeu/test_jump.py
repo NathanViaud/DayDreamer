@@ -67,7 +67,7 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-    level = 1
+    level = 3
     pts = 0
 
     f = open('score.txt', 'a')

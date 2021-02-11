@@ -53,6 +53,7 @@ class plateforme():
                 self.img = pygame.image.load("sprites/plateforme/sol_nuit.png")
             elif self.type == "plat":
                 self.img = pygame.image.load("sprites/plateforme/p1_nuit.png")
+                self.img = pygame.transform.scale(self.img, (self.width, self.height))
             elif self.type == "bloc_4x7":
                 self.img = pygame.image.load("sprites/plateforme/bloc_4x7_nuit.png")
             elif self.type == "bloc_2x3":
@@ -69,6 +70,7 @@ class plateforme():
                 self.img = pygame.image.load("sprites/plateforme/bloc.png")
             elif self.type == "plat":
                 self.img = pygame.image.load("sprites/plateforme/p1.png")
+                self.img = pygame.transform.scale(self.img, (self.width, self.height))
             elif self.type == "sol":
                 self.img = pygame.image.load("sprites/plateforme/sol.png")
             elif self.type == "bloc_4x7":
