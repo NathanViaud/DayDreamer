@@ -346,9 +346,9 @@ class genLevel():
 
         return world(fond, plateformes, fruits, ennemis, obs, cle1, l1, sort)
 
-    def genNiveau2(self):
+    def genNiveau3(self):
 
-sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
+        sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
         p_saut1 = plateforme(800, 500, self.screen, 100, 10, "plat")
         p_saut2 = plateforme(1050, 450, self.screen, 100, 10, "plat")
         p_saut3 = plateforme(800, 300, self.screen, 100, 10, "plat")
@@ -458,6 +458,144 @@ sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
 
         #lit
         l1 = lit(3850, 690, self.screen)
+
+
+        # Sortie
+        sort = sortie(8000, 622, self.screen)
+
+        fond.reset()
+
+        return world(fond, plateformes, fruits, ennemis, obs, cle1, l1, sort)
+
+
+    def genNiveau4(self):
+        sol = plateforme(0, 750, self.screen, 8196, 18, "sol")
+        p_saut1 = plateforme(1800, 500, self.screen, 100, 10, "plat")
+        p_saut2 = plateforme(2100, 400, self.screen, 100, 10, "plat")
+        p_saut3 = plateforme(1830, 250, self.screen, 20, 10, "plat")
+        p_saut4 = plateforme(2410, 100, self.screen, 150, 10, "plat")
+        p_saut5 = plateforme(2680, 250, self.screen, 100, 10, "plat")
+        p_saut6 = plateforme(2900, 415, self.screen, 100, 10, "plat")
+        p_saut7 = plateforme(2680, 500, self.screen, 100, 10, "plat")
+        p_saut8 = plateforme(2900, 200, self.screen, 100, 10, "plat")
+        p_saut9 = plateforme(3300, 200, self.screen, 50, 10, "plat")
+        p_saut10 = plateforme(3600, 200, self.screen, 20, 10, "plat")
+        p_saut11 = plateforme(3880, 200, self.screen, 20, 10, "plat")
+        p_saut12 = plateforme(3820, 400, self.screen, 100, 10, "plat")
+        p_saut13 = plateforme(5500, 500, self.screen, 100, 10, "plat")
+        p_saut14 = plateforme(5800, 415, self.screen, 30, 10, "plat")
+        p_saut15 = plateforme(6050, 415, self.screen, 30, 10, "plat")
+        p_saut16 = plateforme(6300, 400, self.screen, 100, 10, "plat")
+        p_saut17 = plateforme(6330, 200, self.screen, 20, 10, "plat")
+
+
+
+        p_porte = plateforme(4000, 0, self.screen, 100,768, "porte")
+
+        plateformes.append(sol)
+        plateformes.append(p_saut1)
+        plateformes.append(p_saut2)
+        plateformes.append(p_saut3)
+        plateformes.append(p_saut4)
+        plateformes.append(p_saut5)
+        plateformes.append(p_saut6)
+        plateformes.append(p_saut7)
+        plateformes.append(p_saut8)
+        plateformes.append(p_saut9)
+        plateformes.append(p_saut10)
+        plateformes.append(p_saut11)
+        plateformes.append(p_saut12)
+
+        plateformes.append(p_saut13)
+        plateformes.append(p_saut14)
+        plateformes.append(p_saut15)
+        plateformes.append(p_saut16)
+        plateformes.append(p_saut17)
+
+        plateformes.append(p_porte)
+
+        # Fruits du niveau:
+        f1 = fruit(1815, 50, self.screen)
+        f2 = fruit(2415, 500, self.screen)
+        f3 = fruit(3880, 50, self.screen)
+
+        fruits.append(f1)
+        fruits.append(f2)
+        fruits.append(f3)
+
+        # Enemis:
+        e1 = ennemi(1, 4500, 650, self.screen, 4499, 5000, 1, 350, 350, 1)
+        e2 = ennemi(2, 1500, 300, self.screen, 1500, 1500, 4, 280, 680, 4)
+        e3 = ennemi(2, 5300, 300, self.screen, 5300, 5300, 4, 50, 680, 4)
+        e4 = ennemi(2, 5900, 300, self.screen, 5900, 5900, 4, 50, 680, 4)
+
+
+        ennemis.append(e1)
+        ennemis.append(e2)
+        ennemis.append(e3)
+        ennemis.append(e4)
+
+        # Piques ( A changer)
+        obstacle1 = obstacles(350, 690, self.screen)
+        obstacle2 = obstacles(400, 690, self.screen)
+        obstacle3 = obstacles(450, 690, self.screen)
+        obstacle4 = obstacles(500, 690, self.screen)
+        obstacle5 = obstacles(700, 690, self.screen)
+        obstacle6 = obstacles(900, 690, self.screen)
+        obstacle7 = obstacles(900, 640, self.screen)
+        obstacle8 = obstacles(1100, 690, self.screen)
+        obstacle9 = obstacles(1100, 640, self.screen)
+        obstacle10 = obstacles(1100, 590, self.screen)
+
+        obstacle11 = obstacles(2400, 690, self.screen)
+        obstacle12 = obstacles(2400, 640, self.screen)
+        obstacle13 = obstacles(2400, 368, self.screen)
+        obstacle14 = obstacles(2550, 368, self.screen)
+        obstacle15 = obstacles(2550, 500, self.screen)
+
+        obstacle16 = obstacles(6600, 690, self.screen)
+        obstacle17 = obstacles(6650, 690, self.screen)
+        obstacle18 = obstacles(6700, 690, self.screen)
+        obstacle19 = obstacles(6750, 690, self.screen)
+        obstacle20 = obstacles(6950, 690, self.screen)
+        obstacle21 = obstacles(7150, 690, self.screen)
+        obstacle22 = obstacles(7150, 640, self.screen)
+        obstacle23 = obstacles(7350, 690, self.screen)
+        obstacle24 = obstacles(7350, 640, self.screen)
+        obstacle25 = obstacles(7350, 590, self.screen)
+        # debut
+        obs.append(obstacle1)
+        obs.append(obstacle2)
+        obs.append(obstacle3)
+        obs.append(obstacle4)
+        obs.append(obstacle5)
+        obs.append(obstacle6)
+        obs.append(obstacle7)
+        obs.append(obstacle8)
+        obs.append(obstacle9)
+        obs.append(obstacle10)
+        obs.append(obstacle11)
+        obs.append(obstacle12)
+        obs.append(obstacle13)
+        obs.append(obstacle14)
+        obs.append(obstacle15)
+
+        # nuit
+        obs.append(obstacle16)
+        obs.append(obstacle17)
+        obs.append(obstacle18)
+        obs.append(obstacle19)
+        obs.append(obstacle20)
+        obs.append(obstacle21)
+        obs.append(obstacle22)
+        obs.append(obstacle23)
+        obs.append(obstacle24)
+        obs.append(obstacle25)
+        #clé
+        cle1 = cle(6330, 80, self.screen)
+
+        #lit
+        l1 = lit(3850, 390, self.screen)
 
 
         # Sortie
