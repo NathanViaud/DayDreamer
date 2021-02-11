@@ -24,9 +24,9 @@ class genLevel():
             return self.genNiveau1()
         elif self.niveau == 2:
             return self.genNiveau2()
-        elif self.niveau == 3:
-            return self.genNiveau3()
         elif self.niveau == 4:
+            return self.genNiveau3()
+        elif self.niveau == 3:
             return self.genNiveau4()
 
 
