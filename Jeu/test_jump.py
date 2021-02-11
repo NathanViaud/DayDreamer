@@ -141,6 +141,9 @@ def runGame(screen):
                 joueur.estTutoriel = False
             pygame.display.update()
             
+            if joueur.mort:
+                pts -= 10
+
             while joueur.mort and joue:
                 screen.blit(mort, (0,0,1024,768))
                 pygame.display.update()
@@ -160,11 +163,10 @@ def runGame(screen):
                             niveaux[level] = genLevel.loadLevel(level)
                             joueur = player(3, 600, screen, niveaux[level], pts)
             if joueur.victoire == True:
+                if level != 0:
+                    pts += joueur.score
                 joue = False
                 level += 1
-                pts += joueur.score
-                print("score")
-                print(pts)
             if level != 0:
                 pygame.time.wait(1)
         print(level)
