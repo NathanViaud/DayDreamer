@@ -61,18 +61,19 @@ def runGame(screen):
     score_font = pygame.font.Font(None, 30)
 
     niveaux = []
-   # niveaux.append(tuto)
+    niveaux.append(tuto)
     #niveaux.append(niveau1)
-    niveaux.append(niveau2)
-    #niveaux.append(niveau3)
+    #niveaux.append(niveau2)
+    niveaux.append(niveau3)
     #niveaux.append(niveau4)
 
     level = 0
+    pts = 0
 
     while monde:
         if level != 0:
             tutorial = False
-        joueur = player(3, 100, screen, niveaux[level])
+        joueur = player(3, 100, screen, niveaux[level], pts)
         
         joue = True
         joueur.victoire = False
@@ -81,7 +82,7 @@ def runGame(screen):
                 color = (255,255,255)
             else:
                 color = (0,0,0)
-            score = score_font.render("Score: "+str(joueur.score), True, color)
+            score = score_font.render("Score: "+str(joueur.score +pts), True, color)
             if level != 0:
                 pygame.time.wait(1)
             for event in pygame.event.get():
@@ -157,10 +158,13 @@ def runGame(screen):
                             if level == 1:
                                 joueur.score = 0
                             niveaux[level] = genLevel.loadLevel(level)
-                            joueur = player(3, 600, screen, niveaux[level])
+                            joueur = player(3, 600, screen, niveaux[level], pts)
             if joueur.victoire == True:
                 joue = False
                 level += 1
+                pts += joueur.score
+                print("score")
+                print(pts)
             if level != 0:
                 pygame.time.wait(1)
         print(level)
