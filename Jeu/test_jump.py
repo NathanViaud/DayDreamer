@@ -16,6 +16,7 @@ pygame.init()
 
 def runGame(screen):
     from Jeu.Menu.menu import runMenu
+    from Jeu.Menu.leaderboard import runLeaderboard
     global genLevel
 
     pygame.display.set_caption("cours forest")
@@ -165,6 +166,7 @@ def runGame(screen):
                             monde = False
                             pseudo = runScore(screen)
                             print(pseudo)
+                            runLeaderboard(screen)
                         elif event.key == pygame.K_SPACE:
                             joue = False
                             joueur.mort = False
