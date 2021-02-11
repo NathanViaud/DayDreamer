@@ -25,7 +25,6 @@ class button:
     def update(self):
         if self.active:
             self.text = font.render(self.contenu, True, (116,116,116))
-            pygame.draw.rect(self.screen, Black, pygame.Rect(self.rect.x - 10, self.rect.y, self.size[0] + 20, self.size[1] + 10), 2)
         elif self.contenu == "Lancement de la partie":
             self.text = font_lancement.render(self.contenu, True, (116,116,116))
         else:
