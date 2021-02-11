@@ -55,7 +55,6 @@ def runLeaderboard(screen):
             pts = str(leaderboard[i][1])
             score = font.render(str(leaderboard[i][0] + " : " + pts), True, white)
             screen.blit(score, (200, 175+i*100))
-          
         for b in buttons:
             b.update()
         for event in pygame.event.get():
