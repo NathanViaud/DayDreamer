@@ -10,6 +10,7 @@ from Jeu.obstacles import *
 from Jeu.lit import *
 from Jeu.sortie import *
 from Jeu.genLevel import *
+from Jeu.score_rec import runScore
 
 pygame.init()
 
@@ -162,6 +163,8 @@ def runGame(screen):
                         if event.key == pygame.K_ESCAPE:
                             joue = False
                             monde = False
+                            pseudo = runScore(screen)
+                            print(pseudo)
                         elif event.key == pygame.K_SPACE:
                             joue = False
                             joueur.mort = False
