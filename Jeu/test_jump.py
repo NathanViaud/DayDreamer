@@ -61,11 +61,11 @@ def runGame(screen):
     score_font = pygame.font.Font(None, 30)
 
     niveaux = []
-   # niveaux.append(tuto)
-    #niveaux.append(niveau1)
+    niveaux.append(tuto)
+    niveaux.append(niveau1)
     niveaux.append(niveau2)
-    #niveaux.append(niveau3)
-    #niveaux.append(niveau4)
+    niveaux.append(niveau3)
+    niveaux.append(niveau4)
 
     level = 0
 
