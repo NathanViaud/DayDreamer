@@ -655,7 +655,7 @@ class genLevel():
         fruits.append(f12)
 
         # Enemis:
-        e1 = ennemi(1, 4500, 650, self.screen, 4499, 5000, 1, 350, 350, 1)
+        e1 = ennemi(1, 4500, 700, self.screen, 4499, 5000, 1, 350, 350, 1)
         e2 = ennemi(2, 1500, 300, self.screen, 1500, 1500, 4, 280, 680, 4)
         e3 = ennemi(2, 5300, 300, self.screen, 5300, 5300, 4, 50, 680, 4)
         e4 = ennemi(2, 5900, 300, self.screen, 5900, 5900, 4, 50, 680, 4)
