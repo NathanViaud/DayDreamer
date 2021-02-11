@@ -7,11 +7,13 @@ class plateforme():
     def __init__(self, x, y, screen, width, height, type):
         self.type = type
         if self.type == "porte":
-            img = pygame.image.load("sprites/plateforme/p1.png")
+            img = pygame.image.load("sprites/plateforme/porte.png")
         elif self.type == "plat":
             img = pygame.image.load("sprites/plateforme/p1.png")
         elif self.type == "sol":
-            img = pygame.image.load("sprites/plateforme/p1.png")
+            img = pygame.image.load("sprites/plateforme/sol.png")
+        elif self.type == "bloc":
+            img = pygame.image.load("sprites/plateforme/bloc.png")
         self.img = pygame.transform.scale(img, (width, height))
         self.rect = self.img.get_rect()
         self.rect.x = x
@@ -26,7 +28,6 @@ class plateforme():
     
     def update(self):
         self.screen.blit(self.img, self.rect)
-        pygame.draw.rect(self.screen, (255, 0, 0), self.rect, 2)
 
     def deplacement(self, vitesse):
         self.rect.x += vitesse
@@ -50,6 +51,10 @@ class plateforme():
                 self.rect.y = self.y_initial
                 self.rect.width = self.width
                 self.rect.height = self.height
+            elif self.type == "bloc":
+                img = pygame.image.load("sprites/plateforme/bloc.png")
+            #elif self.type == "plat":
+            #elif self.type == "sol":
         self.update()
 
     def removePorte(self):
