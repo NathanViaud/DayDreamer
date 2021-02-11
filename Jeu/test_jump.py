@@ -67,26 +67,10 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-<<<<<<< Updated upstream
-    level = 3
-=======
     level = 0
->>>>>>> Stashed changes
     pts = 0
     cmpt_mort = 0
     tete_mort = pygame.image.load("sprites/compteur_mort.png")
-
-    f = open('score.txt', 'a')
-    f1 = open('score.txt', 'r')
-    lines = f1.readlines()
-    for line in lines:
-        l = line.split()
-        l2 = line.split('|')
-        nom = l2[0]
-        points = l2[1]
-        print("nom : " + str(nom))
-        print("score : " + str(points))
-   
 
     while monde:
         if level != 0:
@@ -191,13 +175,7 @@ def runGame(screen):
                 level += 1
             if level != 0:
                 pygame.time.wait(1)
-        print(level)
         if level > len(niveaux):
             monde = False
-        print(joueur.victoire)
-        f.write(str("Nathan"))
-        f.write(str("|"))
-        f.write(str(pts))
-        f.write('\n')
 
     runMenu(screen)

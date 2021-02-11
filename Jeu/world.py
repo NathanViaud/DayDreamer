@@ -94,7 +94,6 @@ class world():
                             player.screen.blit(enemies_messsage, (self.fond.pos_x+4250, 200))
                             player.screen.blit(cle_message, (self.fond.pos_x+5200,350))
                             player.screen.blit(porte_message, (self.fond.pos_x+5700, 500))
-                        print(plateforme.rect.y)
                         pygame.display.update()
                         pygame.time.wait(1)
 

@@ -28,8 +28,37 @@ def runLeaderboard(screen):
     buttons = [button1, button2]
     loop = True
 
+    joueurs = []
+
+    f = open('Menu/score.txt', 'r')
+    lines = f.readlines()
+    for line in lines:
+        l = line.split('|')
+        nom = l[0]
+        points = l[1]
+        joueur = [nom, points]
+        joueurs.append(joueur)
+
+    leaderboard = []
+
+    for i in range(0, 5):
+        maxi = joueurs[i]
+        for joueur in joueurs:
+            if int(joueur[1]) > int(maxi[1]):
+                maxi = joueur
+        joueurs.remove(maxi)
+        leaderboard.append(maxi)
+
+    font = pygame.font.Font("font/font_menu.ttf", 40)
+    white = (255, 255, 255)
+
     while loop:
         screen.blit(bg, (0,0))
+        for i in range(len(leaderboard)):
+            pts = str(leaderboard[i][1])
+            score = font.render(str(leaderboard[i][0] + " : " + pts), True, white)
+            screen.blit(score, (200, 175+i*100))
+          
         for b in buttons:
             b.update()
         for event in pygame.event.get():
