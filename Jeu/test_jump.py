@@ -174,7 +174,7 @@ def runGame(screen):
                             music.stop()
                             joue = False
                             monde = False
-                            pseudo = runScore(screen)
+                            pseudo = runScore(screen, pts)
                             f.write(str(pseudo))
                             f.write(str('|'))
                             f.write(str(pts) + '\n')
