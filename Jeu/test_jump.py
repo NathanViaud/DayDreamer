@@ -73,7 +73,7 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-    level = 0
+    level = 4
     pts = 0
     cmpt_mort = 0
     tete_mort = pygame.image.load("sprites/compteur_mort.png")
@@ -194,7 +194,7 @@ def runGame(screen):
                 level += 1
             if level != 0:
                 pygame.time.wait(1)
-        if level > len(niveaux):
+        if level >= len(niveaux):
             monde = False
     music.stop()
     runMenu(screen)

@@ -168,7 +168,8 @@ class player():
         if self.world.cle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == True:
                 self.world.cle.prendreCle()
-                cle_sound.play()
+                if not self.cle:
+                    cle_sound.play()
                 self.cle = True
 
         if self.world.lit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
