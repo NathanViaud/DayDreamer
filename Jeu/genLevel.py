@@ -100,7 +100,7 @@ class genLevel():
         obs.append(obstacle2)
         obs.append(obstacle3)
 
-        #clé
+        #cle
         cle1 = cle(5280, 400, self.screen)
 
         #lit
@@ -218,7 +218,7 @@ class genLevel():
         obs.append(obstacle5)
         obs.append(obstacle6)
 
-        #clé
+        #cle
         cle1 = cle(5280, 400, self.screen)
 
         #lit
@@ -409,7 +409,7 @@ class genLevel():
         obs.append(obstacle33)
 
 
-        #clé
+        #cle
         cle1 = cle(6800, 700,self.screen)
 
         #lit
@@ -558,7 +558,7 @@ class genLevel():
         obs.append(obstacle14)
 
 
-        #clé
+        #cle
         cle1 = cle(6330, 80, self.screen)
 
         #lit
@@ -722,7 +722,7 @@ class genLevel():
         obs.append(obstacle23)
         obs.append(obstacle24)
         obs.append(obstacle25)
-        #clé
+        #cle
         cle1 = cle(6330, 80, self.screen)
 
         #lit

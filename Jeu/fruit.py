@@ -5,7 +5,7 @@ class fruit():
     #x,y : position
     def __init__(self, x, y, screen):
         num = random.randint(1,3)
-        img = pygame.image.load(f"sprites/items/fruit{num}.png")
+        img = pygame.image.load("sprites/items/fruit"+str(num)+".png")
         self.img = img
         self.rect = self.img.get_rect()
         self.rect.x = x
@@ -24,9 +24,9 @@ class fruit():
         self.nuit = not self.nuit
         if self.nuit == True:
             num = random.randint(1,3)
-            img = pygame.image.load(f"sprites/items/leg{num}.png")  #fruit nuit
+            img = pygame.image.load("sprites/items/leg"+str(num)+".png")  #fruit nuit
         else:
             num = random.randint(1,3)
-            img = pygame.image.load(f"sprites/items/fruit{num}.png")  #fruit jour
+            img = pygame.image.load("sprites/items/fruit"+str(num)+".png")  #fruit jour
         self.img = img
         self.update()
