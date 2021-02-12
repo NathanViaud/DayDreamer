@@ -203,3 +203,4 @@ def runGame(screen):
             f.write(str('|'))
             f.write(str(pts) + '\n')
             runLeaderboard(screen)
+    runMenu(screen)
