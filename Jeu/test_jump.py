@@ -41,8 +41,6 @@ def runGame(screen):
 
     enSaut = False
     mort = pygame.image.load("images/mort.png")
-    course = pygame.mixer.Sound("./son/course.wav")
-    saut = pygame.mixer.Sound("./son/saut.wav")
 
     # World tutoriel:
     tutorial = True
