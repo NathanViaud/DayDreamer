@@ -195,6 +195,11 @@ def runGame(screen):
             if level != 0:
                 pygame.time.wait(1)
         if level >= len(niveaux):
+            music.stop()
+            joue = False
             monde = False
-    music.stop()
-    runMenu(screen)
+            pseudo = runScore(screen, pts)
+            f.write(str(pseudo))
+            f.write(str('|'))
+            f.write(str(pts) + '\n')
+            runLeaderboard(screen)

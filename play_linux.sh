@@ -1,2 +1,1 @@
-cd Jeu
-python Menu/run.py
+cd Jeu;python Menu/run.py
