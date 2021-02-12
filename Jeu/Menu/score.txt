@@ -1,15 +1,3 @@
-Abel|1109
-Carlos|69420
-Ekip|6670
-Nathan|350
-Nathan|340
-Nathan|330
-Nathan|320
-Nathan|310
-Nathan|300
-Nathan|290
-Nathan|290
-Abel|1109
 Abel|99
 Abel|99
 Abel|99
@@ -17,3 +5,7 @@ Abel|99
 Abel|99
 Abel|99
 Abel|99
+abelichon|730
+Carlos|-10
+nathan|-10
+menfou|-10
