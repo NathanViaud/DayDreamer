@@ -179,6 +179,7 @@ def runGame(screen):
                             f.write(str(pseudo))
                             f.write(str('|'))
                             f.write(str(pts) + '\n')
+                            f.close()
                             runLeaderboard(screen)
                         elif event.key == pygame.K_SPACE:
                             music.play(-1)

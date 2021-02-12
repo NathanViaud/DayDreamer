@@ -12,3 +12,4 @@ menfou|-10
 Abel|490
 Nathan|730
 nathan|740
+test|740
