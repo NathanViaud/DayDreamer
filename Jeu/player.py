@@ -1,5 +1,23 @@
 import pygame
 
+cle_sound = pygame.mixer.Sound("sound/cle.wav")
+cle_sound.set_volume(0.2)
+
+dodo = pygame.mixer.Sound("sound/dodo.wav")
+dodo.set_volume(0.2)
+
+fin_niveau = pygame.mixer.Sound("sound/porte.wav")
+fin_niveau.set_volume(0.5)
+
+fruit_sound = pygame.mixer.Sound("sound/fruit.wav")
+fruit_sound.set_volume(0.5)
+
+porte_bois = pygame.mixer.Sound("sound/porte_bois.wav")
+porte_bois.set_volume(0.25)
+
+jump_sound = pygame.mixer.Sound("sound/jump.wav")
+jump_sound.set_volume(0.5)
+
 from Jeu.plateforme import *
 from Jeu.fond import *
 from Jeu.world import *
@@ -88,6 +106,7 @@ class player():
 
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and self.jumped == False:
+            jump_sound.play()
             self.vel_y = -6.75
             self.jumped = True
         if key[pygame.K_LEFT]:
@@ -116,6 +135,7 @@ class player():
                 vx =0
                 if self.cle:
                     if plateforme.type == "porte":
+                        porte_bois.play()
                         self.world.removePorte(self)
             if plateforme.rect.colliderect(self.rect.x, self.rect.y+dy, self.width, self.height):
                 self.last_plateform = plateforme
@@ -132,6 +152,7 @@ class player():
                 
         for fruit in self.world.fruits:
             if fruit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
+                fruit_sound.play()
                 self.world.removeFruit(fruit)
                 self.score += self.score_fruit
                 
@@ -147,16 +168,19 @@ class player():
         if self.world.cle.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == True:
                 self.world.cle.prendreCle()
+                cle_sound.play()
                 self.cle = True
 
         if self.world.lit.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if key[pygame.K_f]:
+                dodo.play()
                 self.endort()
                 self.world.sleep()
                 self.reveille()
 
         if self.world.sortie.rect.colliderect(self.rect.x, self.rect.y, self.width, self.height):
             if self.world.nuit == False:
+                fin_niveau.play()
                 self.victoire = True
                 self.score += self.score_fin
         else:

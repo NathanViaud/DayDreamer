@@ -11,7 +11,7 @@ from Jeu.Menu.leaderboard import runLeaderboard
 from Jeu.Menu.leaderboard import *
 from Jeu.Menu.menu import runMenu
 from Jeu.Menu.menu import *
-
+pygame.mixer.init()
 size = (1024,768)
 screen = pygame.display.set_mode(size)
 

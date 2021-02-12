@@ -14,6 +14,12 @@ from Jeu.score_rec import runScore
 
 pygame.init()
 
+music = pygame.mixer.Sound("sound/day_music.wav")
+music.set_volume(0.05)
+
+death_sound = pygame.mixer.Sound("sound/oof.wav")
+death_sound.set_volume(0.5)
+
 def runGame(screen):
     from Jeu.Menu.menu import runMenu
     from Jeu.Menu.leaderboard import runLeaderboard
@@ -69,10 +75,11 @@ def runGame(screen):
     niveaux.append(niveau3)
     niveaux.append(niveau4)
 
-    level = 1
+    level = 0
     pts = 0
     cmpt_mort = 0
     tete_mort = pygame.image.load("sprites/compteur_mort.png")
+    music.play(-1)
 
     while monde:
         if level != 0:
@@ -149,6 +156,8 @@ def runGame(screen):
             pygame.display.update()
             
             if joueur.mort :
+                music.stop()
+                death_sound.play()
                 if level != 0:
                     pts -= 10
                     cmpt_mort += 1
@@ -162,12 +171,14 @@ def runGame(screen):
                         monde = False
                     elif event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_ESCAPE:
+                            music.stop()
                             joue = False
                             monde = False
                             pseudo = runScore(screen)
                             print(pseudo)
                             runLeaderboard(screen)
                         elif event.key == pygame.K_SPACE:
+                            music.play(-1)
                             joue = False
                             joueur.mort = False
                             if level == 1:
@@ -183,5 +194,5 @@ def runGame(screen):
                 pygame.time.wait(1)
         if level > len(niveaux):
             monde = False
-
+    music.stop()
     runMenu(screen)

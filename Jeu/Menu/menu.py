@@ -10,6 +10,15 @@ from Jeu.test_jump import *
 from Jeu.Menu.leaderboard import runLeaderboard
 
 def runMenu(screen):
+    main_music = pygame.mixer.Sound("sound/menu_music.wav")
+    main_music.set_volume(0.1)
+
+    select = pygame.mixer.Sound("sound/select.wav")
+    select.set_volume(0.2)
+
+    confirm = pygame.mixer.Sound("sound/confirm_sound.wav")
+    confirm.set_volume(0.2)
+
     pygame.display.set_caption("DayDreaming - Menu")
 
     bgs = [pygame.image.load("images/menu/menu1.png"), pygame.image.load("images/menu/menu2.png"), pygame.image.load("images/menu/menu3.png"), pygame.image.load("images/menu/menu4.png")]
@@ -49,6 +58,7 @@ def runMenu(screen):
     pause = True
     index = 0
     fondu = True
+    main_music.play(-1)
     while loop:
         if fondu:
             reveille()
@@ -65,26 +75,31 @@ def runMenu(screen):
                         if event.key == pygame.K_ESCAPE:
                             loop = False
                         if event.key == pygame.K_DOWN and button1.active:
+                            select.play()
                             button1.active = False
                             button2.active = True
                             button3.active = False
                         elif event.key == pygame.K_UP and button2.active:
+                            select.play()
                             button1.active = True
                             button2.active = False
                             button3.active = False
                         elif event.key == pygame.K_DOWN and button2.active:
+                            select.play()
                             button1.active = False
                             button2.active = False
                             button3.active = True
                         elif event.key == pygame.K_UP and button3.active:
+                            select.play()
                             button1.active = False
                             button2.active = True
                             button3.active = False
                         if event.key == pygame.K_RETURN:
+                            confirm.play()
                             if button3.active:
                                 runLeaderboard(screen)
-                                loop = False
                             if button2.active:
+                                pygame.time.wait(800)
                                 loop = False
                             elif button1.active:
                                 button1.change_text("Lancement de la partie")
@@ -94,7 +109,9 @@ def runMenu(screen):
                                 button2.update()
                                 pygame.display.update()
                                 pygame.time.wait(1000)
+                                main_music.stop()
                                 test_jump.runGame(screen)
+                                main_music.play(-1)
                                 loop = False
             else:
                 screen.blit(bgs[index], (0,0))
