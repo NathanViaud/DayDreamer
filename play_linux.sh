@@ -1,1 +1,1 @@
-cd Jeu;python Menu/run.py
+cd Jeu;python3.7 Menu/run.py
