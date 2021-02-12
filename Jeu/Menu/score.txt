@@ -10,3 +10,5 @@ Carlos|-10
 nathan|-10
 menfou|-10
 Abel|490
+Nathan|730
+nathan|740

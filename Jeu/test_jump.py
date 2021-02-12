@@ -79,7 +79,7 @@ def runGame(screen):
     tete_mort = pygame.image.load("sprites/compteur_mort.png")
     music.play(-1)
 
-    f = open('Menu/score.txt','a')
+    
 
     while monde:
         if level != 0:
@@ -175,6 +175,7 @@ def runGame(screen):
                             joue = False
                             monde = False
                             pseudo = runScore(screen, pts)
+                            f = open('Menu/score.txt','a')
                             f.write(str(pseudo))
                             f.write(str('|'))
                             f.write(str(pts) + '\n')
